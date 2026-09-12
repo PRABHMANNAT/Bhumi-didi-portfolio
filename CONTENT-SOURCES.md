@@ -9,6 +9,7 @@ Reviewed on 12 September 2026.
 - The original portrait was supplied by the owner. Hero and skills presentation are preserved.
 - `contact-award.png` was supplied by the owner for the contact-section photo.
 - `badrinath-temple.jpg` was supplied by the owner for the contact form’s image card.
+- `badrinath-temple-himalayas.jpg` was supplied by the owner for the contact image rotation.
 - Testimonial names and roles were supplied in this conversation. Quotes are original draft copy; they are not genuine statements by the named developers. The third persona is fictional and labeled.
 - The owner requested a Virtual Simulation Labs featured concept and supplied a reference layout. The card description is adapted at a high level and is explicitly labeled as a concept pending confirmation of implementation details.
 - The owner supplied the Spotify track URL used in the footer player.
