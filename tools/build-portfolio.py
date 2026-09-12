@@ -108,6 +108,7 @@ contact=f'''<section class="p-contact-wrap p-section p-light" id="contact"><div 
 # authoring template above stays intact while individual design choices are easy to revise.
 contact=contact.replace('''<div class="say-hi"><p class="p-kicker">Start a conversation</p><h2>Say <em>Hi</em> <span aria-hidden="true">👋</span></h2><p>Tell me about the problem, project or opportunity on your mind.</p></div>''','')
 contact=contact.replace('''<p>Let’s make the idea<br><strong>real.</strong></p>''','')
+contact=contact.replace('''<div class="contact-avatar">BK</div>''','')
 page.write_text(prefix+about+experience+featured+catalog+achievements+certifications+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
 (root/'dist/project-data.json').write_text(json.dumps(projects,ensure_ascii=False,indent=2),encoding='utf-8')
 script=(root/'dist/script.js').read_text(encoding='utf-8').split('const ugcSlides')[0]
