@@ -7,6 +7,7 @@ Reviewed on 12 September 2026.
 - `RESUME (2) (1).pdf`: education, CGPA, contact details, earlier roles, startup initiatives, research titles and competition awards. A copy is served as `dist/assets/bhumi-kapoor-resume.pdf`.
 - Pasted About / Experience copy: founder story, 35+ global clients, work since 10th standard, current unnamed AI/automation internship and broader career narrative.
 - The original portrait was supplied by the owner. Hero and skills presentation are preserved.
+- `contact-award.png` was supplied by the owner for the contact-section photo.
 - Testimonial names and roles were supplied in this conversation. Quotes are original draft copy; they are not genuine statements by the named developers. The third persona is fictional and labeled.
 - The owner requested a Virtual Simulation Labs featured concept and supplied a reference layout. The card description is adapted at a high level and is explicitly labeled as a concept pending confirmation of implementation details.
 - The owner supplied the Spotify track URL used in the footer player.
