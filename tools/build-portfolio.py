@@ -110,6 +110,7 @@ contact=contact.replace('''<div class="say-hi"><p class="p-kicker">Start a conve
 contact=contact.replace('''<p>Let’s make the idea<br><strong>real.</strong></p>''','')
 contact=contact.replace('''<div class="contact-avatar">BK</div>''','')
 contact=contact.replace('''<div class="idea-star">✦</div>''','')
+contact=contact.replace('''<div class="footer-socials" aria-label="Social links"><a href="{LI}" target="_blank" rel="noreferrer">in LinkedIn</a><a href="https://github.com/PRABHMANNAT/Bhumi-didi-portfolio" target="_blank" rel="noreferrer">⌘ Portfolio GitHub</a><a href="mailto:{MAIL}">✉ Email</a><span class="is-disabled" title="Instagram link to be added">◎ Instagram · add link</span></div>''','')
 page.write_text(prefix+about+experience+featured+catalog+achievements+certifications+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
 (root/'dist/project-data.json').write_text(json.dumps(projects,ensure_ascii=False,indent=2),encoding='utf-8')
 script=(root/'dist/script.js').read_text(encoding='utf-8').split('const ugcSlides')[0]
