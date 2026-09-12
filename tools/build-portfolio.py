@@ -82,7 +82,7 @@ for logo,title,issuer,url in certs:
     certifications+=f'<a class="cert-card" href="{url}" target="_blank" rel="noreferrer"><span class="cert-logo">{logo}</span><span><h3>{title}</h3><p>{issuer}</p></span><b>↗</b></a>'
 certifications+=f'</div><a class="text-link" href="{LI}details/certifications/" target="_blank" rel="noreferrer">View all credentials on LinkedIn ↗</a></section>'
 
-research='<section class="p-research p-section p-light" id="research">'+head('07 — Research & case studies','Questions.<br><em>Experiments. Insights.</em>','From speech AI to connected systems, a space for deeper thinking.')+'<div class="research-grid">'
+research='<section class="p-research p-section p-light" id="research"><div class="p-heading p-heading-no-kicker"><div><h2>Questions.<br><em>Experiments. Insights.</em></h2><p>From speech AI to connected systems, a space for deeper thinking.</p></div></div><div class="research-grid">'
 for pid in ['speech','tele','epi']:
     p=next(p for p in projects if p['id']==pid)
     research+=f'<article><button data-project="{pid}">{img(p["image"],p["note"])}<small>{"Industry research case study" if pid=="speech" else "Research publication"}</small><h3>{p["name"]}</h3><p>{p["summary"]}</p><span class="author">BK <span>Bhumi Kapoor</span><b>↗</b></span></button></article>'
