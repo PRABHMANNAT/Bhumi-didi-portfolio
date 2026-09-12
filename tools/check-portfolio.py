@@ -27,6 +27,9 @@ assert len(data)==7
 config=json.loads((root/'vercel.json').read_text())
 assert config['outputDirectory']=='dist' and config['framework'] is None
 assert 'VIDEO PLACEHOLDER' not in current and '<video' not in current
+for removed in ['class="say-hi"', 'class="footer-socials"', '09 — Let’s work together', '07 — Research & case studies', 'Let’s make the idea']:
+    assert removed not in current, f'Removed UI returned: {removed}'
+assert current.index('class="footer-name"') < current.index('class="footer-top"'), 'Footer navigation must follow the portfolio name'
 baseline=subprocess.check_output(['git','-c',f'safe.directory={root.as_posix()}','show','9a1e828:dist/index.html'],cwd=root).decode('utf-8')
 def section(source, marker):
     return source[source.index(marker):source.index('</section>',source.index(marker))+10]

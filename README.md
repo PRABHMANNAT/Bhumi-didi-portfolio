@@ -30,6 +30,8 @@ Testimonials are explicitly **draft wording**, not approved endorsements. Names/
 
 The contact form opens the visitor's email application with a draft. It does not send or store submissions. The page explains this, and a direct email link is available as fallback.
 
+The contact layout keeps the form and a simple laptop illustration, without a separate greeting banner or decorative badge. Footer navigation follows the large portfolio name.
+
 Project cards include editorial imagery and actual LinkedIn photos. Editorial images are labeled in project details; they are not presented as product screenshots. No fabricated project performance results, publication DOIs or live demos are included.
 
 Virtual Simulation Labs is presented as a **featured concept** added at the owner’s request. Its original interface illustration was created specifically for this portfolio and the copy asks the owner to confirm implementation status before presenting it as shipped work.
