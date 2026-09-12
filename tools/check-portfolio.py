@@ -33,10 +33,13 @@ assert current.index('class="footer-name"') < current.index('class="footer-top"'
 baseline=subprocess.check_output(['git','-c',f'safe.directory={root.as_posix()}','show','9a1e828:dist/index.html'],cwd=root).decode('utf-8')
 def section(source, marker):
     return source[source.index(marker):source.index('</section>',source.index(marker))+10]
-assert section(current,'<section class="about section"')==section(baseline,'<section class="about section"'), 'Original skills section changed'
+skills_section=section(current,'<section class="about section"')
+assert 'skills-marquee' in skills_section, 'Skills marquee is missing'
+for skill in ['Pandas','NumPy','Scikit-learn','TensorFlow','PyTorch','Matplotlib','Power BI','Tableau','Jupyter','Git','GitHub','Docker','FastAPI','Streamlit','PostgreSQL','MongoDB','LangChain','Hugging Face']:
+    assert skill in skills_section, f'Missing skill: {skill}'
 for marker in ['class="specialties"','class="hero-statement"','class="portrait-wrap"','class="name"','class="stats"','class="micro"','class="signature"','class="scroll"']:
     current_line=next(line.strip() for line in current.splitlines() if marker in line)
     baseline_line=next(line.strip() for line in baseline.splitlines() if marker in line)
     assert current_line==baseline_line, f'Hero content changed: {marker}'
 assert (root/'dist/style.css').read_bytes().replace(b'\r\n',b'\n')==subprocess.check_output(['git','-c',f'safe.directory={root.as_posix()}','show','9a1e828:dist/style.css'],cwd=root).replace(b'\r\n',b'\n')
-print(f'PASS: {len(p.ids)} unique IDs, {len(p.assets)} local resource references, seven project details, all navigation targets, Vercel config, unchanged hero content, and exact original skills HTML/CSS.')
+print(f'PASS: {len(p.ids)} unique IDs, {len(p.assets)} local resource references, seven project details, all navigation targets, Vercel config, preserved hero content, and expanded skills marquee.')
