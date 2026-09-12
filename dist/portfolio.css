@@ -38,6 +38,10 @@
 @media(max-width:760px){.p-contact-wrap .contact-panel{gap:13px;padding:13px;min-height:0}.contact-visual{height:310px}.p-contact-wrap .contact-panel #contact-form{padding:27px 20px}.p-contact-wrap .contact-panel:hover .contact-visual,.p-contact-wrap .contact-panel:hover #contact-form,.p-contact-wrap .contact-panel:focus-within #contact-form{transform:none}}
 @media(prefers-reduced-motion:reduce){.p-contact-wrap .contact-panel,.contact-visual,.contact-visual img,.p-contact-wrap .contact-panel #contact-form{transition:none;animation:none!important;transform:none!important}}
 
+/* The contact visual is a two-photo gallery; JavaScript advances the active frame. */
+.contact-visual img{position:absolute;inset:0;opacity:0;transition:opacity .7s ease,transform .65s cubic-bezier(.2,.8,.2,1)}
+.contact-visual img.is-active{opacity:1}
+
 /* Floating navigation shared by the hero and every section below it. */
 body>.site-floating-nav{position:fixed;top:18px;left:50%;width:min(1120px,calc(100% - 48px));height:64px;z-index:100;display:flex;align-items:center;gap:28px;padding:8px 10px 8px 24px;color:#f7f7f3;background:rgba(10,11,11,.92);border:1px solid rgba(255,255,255,.15);border-radius:999px;box-shadow:0 16px 45px rgba(0,0,0,.22);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateX(-50%)}
 body>.site-floating-nav .logo{font-size:30px;letter-spacing:-2px;color:#fff}
