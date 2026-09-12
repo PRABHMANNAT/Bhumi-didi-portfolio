@@ -1,6 +1,6 @@
 # Bhumi Kapoor — Portfolio
 
-A responsive, static portfolio with local images, an image carousel, project filters and detail dialogs, expandable experience, a draggable achievement photo board, certification links, research cards, draft testimonials and an email contact form.
+A responsive, static portfolio with local images, an image carousel, project filters and detail dialogs, expandable experience, a draggable achievement photo board, certification links, research cards, an editorial testimonial collage, a split contact form, Spotify embed and an animated footer.
 
 ## Vercel deployment
 
@@ -31,5 +31,7 @@ Testimonials are explicitly **draft wording**, not approved endorsements. Names/
 The contact form opens the visitor's email application with a draft. It does not send or store submissions. The page explains this, and a direct email link is available as fallback.
 
 Project cards include editorial imagery and actual LinkedIn photos. Editorial images are labeled in project details; they are not presented as product screenshots. No fabricated project performance results, publication DOIs or live demos are included.
+
+Virtual Simulation Labs is presented as a **featured concept** added at the owner’s request. Its original interface illustration was created specifically for this portfolio and the copy asks the owner to confirm implementation status before presenting it as shipped work.
 
 See `CONTENT-SOURCES.md` for factual sources, date differences and asset credits.

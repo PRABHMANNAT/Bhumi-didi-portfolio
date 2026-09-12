@@ -23,7 +23,7 @@ for asset in p.assets+[x for x in p.links if x.startswith('assets/')]:
     assert (root/'dist'/asset).is_file(), f'Missing asset: {asset}'
 data=json.loads((root/'dist/project-data.json').read_text(encoding='utf-8'))
 for project in data: assert (root/'dist/assets'/project['image']).is_file()
-assert len(data)==6
+assert len(data)==7
 config=json.loads((root/'vercel.json').read_text())
 assert config['outputDirectory']=='dist' and config['framework'] is None
 assert 'VIDEO PLACEHOLDER' not in current and '<video' not in current
@@ -36,4 +36,4 @@ for marker in ['class="specialties"','class="hero-statement"','class="portrait-w
     baseline_line=next(line.strip() for line in baseline.splitlines() if marker in line)
     assert current_line==baseline_line, f'Hero content changed: {marker}'
 assert (root/'dist/style.css').read_bytes().replace(b'\r\n',b'\n')==subprocess.check_output(['git','-c',f'safe.directory={root.as_posix()}','show','9a1e828:dist/style.css'],cwd=root).replace(b'\r\n',b'\n')
-print(f'PASS: {len(p.ids)} unique IDs, {len(p.assets)} local resource references, six project details, all navigation targets, Vercel config, unchanged hero content, and exact original skills HTML/CSS.')
+print(f'PASS: {len(p.ids)} unique IDs, {len(p.assets)} local resource references, seven project details, all navigation targets, Vercel config, unchanged hero content, and exact original skills HTML/CSS.')

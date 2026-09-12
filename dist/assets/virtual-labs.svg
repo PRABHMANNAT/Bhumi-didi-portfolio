@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Virtual Simulation Labs interface concept</title>
+  <desc id="desc">A dark blue science lab interface with an atom model, live data chart, experiment controls and floating glassware.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset=".55" stop-color="#142e54"/><stop offset="1" stop-color="#624e86"/></linearGradient>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#cbb9ff" stop-opacity=".8"/><stop offset="1" stop-color="#62d8ff" stop-opacity=".12"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="13" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1400" height="900" rx="42" fill="url(#bg)"/>
+  <g opacity=".13" stroke="#fff"><path d="M0 140h1400M0 280h1400M0 420h1400M0 560h1400M0 700h1400M140 0v900M280 0v900M420 0v900M560 0v900M700 0v900M840 0v900M980 0v900M1120 0v900M1260 0v900"/></g>
+  <rect x="55" y="52" width="1290" height="78" rx="24" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".18"/>
+  <circle cx="95" cy="91" r="10" fill="#f981a9"/><circle cx="130" cy="91" r="10" fill="#ffce72"/><circle cx="165" cy="91" r="10" fill="#70e7bd"/>
+  <text x="220" y="101" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="700">VIRTUAL SIMULATION LABS</text>
+  <rect x="1040" y="72" width="260" height="42" rx="21" fill="#cab8f4"/><text x="1101" y="100" fill="#171421" font-family="Arial,sans-serif" font-size="18" font-weight="700">RUN EXPERIMENT</text>
+  <rect x="55" y="168" width="355" height="675" rx="32" fill="#07101b" fill-opacity=".72" stroke="#fff" stroke-opacity=".18"/>
+  <text x="90" y="225" fill="#9baecc" font-family="Arial,sans-serif" font-size="18" letter-spacing="3">PROMPT TO LAB</text>
+  <text x="90" y="280" fill="#fff" font-family="Arial,sans-serif" font-size="33" font-weight="700">Describe an experiment</text>
+  <rect x="88" y="315" width="288" height="180" rx="22" fill="#fff" fill-opacity=".07" stroke="#87b3ff" stroke-opacity=".45"/>
+  <text x="112" y="360" fill="#d8e3f4" font-family="Arial,sans-serif" font-size="20">Measure the effect of</text><text x="112" y="395" fill="#d8e3f4" font-family="Arial,sans-serif" font-size="20">temperature on reaction</text><text x="112" y="430" fill="#d8e3f4" font-family="Arial,sans-serif" font-size="20">speed over 60 seconds.</text>
+  <rect x="88" y="520" width="288" height="60" rx="18" fill="#7a67aa"/><text x="157" y="558" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="700">GENERATE LAB →</text>
+  <text x="90" y="645" fill="#9baecc" font-family="Arial,sans-serif" font-size="16">PARAMETERS</text>
+  <text x="90" y="692" fill="#fff" font-family="Arial,sans-serif" font-size="20">Temperature</text><text x="325" y="692" text-anchor="end" fill="#7be0ff" font-family="Arial,sans-serif" font-size="20">42°C</text>
+  <line x1="90" y1="720" x2="340" y2="720" stroke="#fff" stroke-opacity=".3" stroke-width="8" stroke-linecap="round"/><line x1="90" y1="720" x2="246" y2="720" stroke="#b9a8ef" stroke-width="8" stroke-linecap="round"/><circle cx="246" cy="720" r="13" fill="#fff"/>
+  <rect x="448" y="168" width="897" height="430" rx="32" fill="#0a1728" fill-opacity=".66" stroke="#fff" stroke-opacity=".18"/>
+  <text x="490" y="222" fill="#9baecc" font-family="Arial,sans-serif" font-size="18" letter-spacing="3">LIVE MOLECULAR MODEL</text>
+  <g transform="translate(795 388)" fill="none" stroke="#9bdfff" stroke-width="6" filter="url(#glow)"><ellipse rx="205" ry="77" transform="rotate(18)"/><ellipse rx="205" ry="77" transform="rotate(138)"/><ellipse rx="205" ry="77" transform="rotate(258)"/><circle r="41" fill="#c9b4ff" stroke="#fff"/><circle cx="-190" cy="-63" r="14" fill="#72ddff"/><circle cx="159" cy="-125" r="14" fill="#ff9cc0"/><circle cx="45" cy="201" r="14" fill="#ffe39d"/></g>
+  <rect x="1040" y="235" width="250" height="300" rx="24" fill="#fff" fill-opacity=".06"/>
+  <text x="1072" y="282" fill="#fff" font-family="Arial,sans-serif" font-size="21" font-weight="700">Real-time feedback</text>
+  <path d="M1075 465C1110 420 1130 460 1160 365s65 90 98-65" fill="none" stroke="#7ce0ff" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#a8b9d1" font-family="Arial,sans-serif" font-size="16"><text x="1072" y="332">Progress</text><text x="1248" y="332" text-anchor="end">68%</text><text x="1072" y="505">Stable reaction</text></g>
+  <rect x="448" y="628" width="897" height="215" rx="32" fill="#fff" fill-opacity=".07" stroke="#fff" stroke-opacity=".16"/>
+  <text x="490" y="684" fill="#fff" font-family="Arial,sans-serif" font-size="24" font-weight="700">Guided lab sequence</text>
+  <g font-family="Arial,sans-serif" font-size="17"><circle cx="510" cy="752" r="24" fill="#7a67aa"/><text x="510" y="758" text-anchor="middle" fill="#fff">1</text><text x="550" y="758" fill="#d9e3f3">Set variables</text><circle cx="760" cy="752" r="24" fill="#557ab0"/><text x="760" y="758" text-anchor="middle" fill="#fff">2</text><text x="800" y="758" fill="#d9e3f3">Run simulation</text><circle cx="1060" cy="752" r="24" fill="#38627d"/><text x="1060" y="758" text-anchor="middle" fill="#fff">3</text><text x="1100" y="758" fill="#d9e3f3">Review results</text></g>
+</svg>
