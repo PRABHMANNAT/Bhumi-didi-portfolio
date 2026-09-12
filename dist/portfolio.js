@@ -82,6 +82,17 @@ document.querySelector('#contact-form').addEventListener('submit',e=>{
   window.location.href=`mailto:Bhumikapoor2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   document.querySelector('#form-status').textContent='Your email draft is ready in your email app. Review it and press Send there. If no app opened, use the email link beside this form.';
 });
+const contactFrames=[...document.querySelectorAll('.contact-visual img')];
+if(contactFrames.length>1&&!reducedMotion){
+  let activeFrame=0;
+  window.setInterval(()=>{
+    contactFrames[activeFrame].classList.remove('is-active');
+    contactFrames[activeFrame].setAttribute('aria-hidden','true');
+    activeFrame=(activeFrame+1)%contactFrames.length;
+    contactFrames[activeFrame].classList.add('is-active');
+    contactFrames[activeFrame].removeAttribute('aria-hidden');
+  },2000);
+}
 document.querySelector('#year').textContent=new Date().getFullYear();
 if(!reducedMotion && 'IntersectionObserver' in window){
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target);}}),{threshold:.08});
