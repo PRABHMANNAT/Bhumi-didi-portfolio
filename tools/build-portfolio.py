@@ -118,6 +118,7 @@ contact=contact.replace('''<div class="contact-illustration" aria-hidden="true">
 contact=contact.replace('''<label>What can we build together?<select name="interest"><option>AI & automation</option><option>Research collaboration</option><option>Websites & digital products</option><option>Internship / hiring opportunity</option><option>Something else</option></select></label>''','')
 contact=contact.replace('''<button class="send-button" type="submit">Create email draft <span>↗</span></button>''','''<button class="send-button" type="submit">Send message <span>↗</span></button>''')
 contact=contact.replace('''<div class="spotify-shell"><div><small>Currently on repeat</small><strong>A track for the build</strong><a href="https://open.spotify.com/track/3hB9lDLyAClYVZivMMl20N" target="_blank" rel="noreferrer">Open in Spotify ↗</a></div><iframe''','''<div class="spotify-shell"><iframe''')
+contact=contact.replace('theme=0','theme=1')
 page.write_text(prefix+about+experience+featured+catalog+achievements+certifications+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
 (root/'dist/project-data.json').write_text(json.dumps(projects,ensure_ascii=False,indent=2),encoding='utf-8')
 script=(root/'dist/script.js').read_text(encoding='utf-8').split('const ugcSlides')[0]
