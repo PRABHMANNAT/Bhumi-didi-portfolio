@@ -59,3 +59,6 @@ Images are locally hosted so the deployable bundle does not depend on expiring i
 - `virtual-labs.svg` is an original code-drawn interface concept created for this portfolio; it does not reproduce the reference site screenshot.
 
 Reference screenshots and sites informed layout only; other portfolio owners' work, employment and endorsements were not attributed to Bhumi.
+# Testimonial author portraits
+
+- `testimonial-prabh.png`, `testimonial-arnav.png`, and `testimonial-riya.png` were supplied by the owner for the testimonial quote avatars. Riya remains a clearly labeled fictional sample persona.
