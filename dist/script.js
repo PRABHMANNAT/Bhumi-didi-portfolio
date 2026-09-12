@@ -15,3 +15,48 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 } else {
   revealItems.forEach(item => item.classList.add('visible'));
 }
+
+const ugcSlides = [...document.querySelectorAll('[data-ugc-slide]')];
+const ugcDots = [...document.querySelectorAll('.ugc-dots i')];
+const ugcPlay = document.querySelector('.ugc-play');
+const ugcStage = document.querySelector('.ugc-media');
+let ugcIndex = 0;
+let ugcPointerStart = null;
+
+function showUgcSlide(index) {
+  ugcIndex = (index + ugcSlides.length) % ugcSlides.length;
+  ugcSlides.forEach((slide, position) => {
+    const distance = (position - ugcIndex + ugcSlides.length) % ugcSlides.length;
+    slide.className = `ugc-video ${distance === 0 ? 'is-active' : distance === 1 ? 'is-next' : 'is-hidden'}`;
+    slide.setAttribute('aria-hidden', distance === 0 ? 'false' : 'true');
+    if (distance === 0 && !slide.querySelector('.ugc-play')) slide.append(ugcPlay);
+  });
+  ugcPlay.setAttribute('aria-pressed', 'false');
+  ugcPlay.setAttribute('aria-label', 'Play video placeholder');
+  ugcSlides.forEach(slide => slide.classList.remove('is-playing'));
+  ugcDots.forEach((dot, position) => dot.classList.toggle('active', position === ugcIndex));
+}
+
+document.querySelector('.ugc-next').addEventListener('click', () => showUgcSlide(ugcIndex + 1));
+document.querySelector('.ugc-prev').addEventListener('click', () => showUgcSlide(ugcIndex - 1));
+ugcPlay.addEventListener('click', () => {
+  const playing = ugcSlides[ugcIndex].classList.toggle('is-playing');
+  ugcPlay.setAttribute('aria-pressed', String(playing));
+  ugcPlay.setAttribute('aria-label', playing ? 'Pause video placeholder' : 'Play video placeholder');
+});
+ugcStage.addEventListener('pointerdown', event => {
+  if (event.target.closest('button')) return;
+  ugcPointerStart = event.clientX;
+  ugcStage.setPointerCapture?.(event.pointerId);
+});
+ugcStage.addEventListener('pointerup', event => {
+  if (ugcPointerStart === null) return;
+  const distance = event.clientX - ugcPointerStart;
+  if (Math.abs(distance) > 45) showUgcSlide(ugcIndex + (distance < 0 ? 1 : -1));
+  ugcPointerStart = null;
+});
+ugcStage.addEventListener('keydown', event => {
+  if (event.key === 'ArrowRight') showUgcSlide(ugcIndex + 1);
+  if (event.key === 'ArrowLeft') showUgcSlide(ugcIndex - 1);
+});
+showUgcSlide(0);
