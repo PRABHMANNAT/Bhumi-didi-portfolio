@@ -27,6 +27,7 @@
 .contact-panel:before{background:radial-gradient(ellipse at 15% 10%,#695a7844,transparent 55%)}
 .contact-illustration{background:radial-gradient(circle at 24% 20%,#d8caed,transparent 36%),#f6f0df}
 .contact-illustration .laptop{top:calc(50% - 72px)}
+.p-footer .footer-name + .footer-top{border-top:1px solid var(--line);padding-top:20px}.p-footer .footer-top + .footer-bottom{margin-top:28px}
 @media(max-width:760px){.contact-illustration .laptop{top:calc(50% - 57px)}}
 .spotify-shell{min-height:180px;border:1px solid #ffffff24;border-radius:22px;padding:14px;background:linear-gradient(135deg,#183f2b,#111816);display:grid;gap:12px}.spotify-shell>div{display:flex;align-items:center;gap:14px;padding:5px 7px}.spotify-shell small{color:#84dca6;text-transform:uppercase;letter-spacing:1px;font-size:9px}.spotify-shell strong{font:22px Georgia,serif}.spotify-shell a{margin-left:auto;font-size:10px;border-bottom:1px solid #fff8;padding-bottom:4px}.spotify-shell iframe{min-height:80px}
 @media(max-width:760px){.spotify-shell>div{align-items:flex-start;flex-direction:column}.spotify-shell a{margin-left:0}}
