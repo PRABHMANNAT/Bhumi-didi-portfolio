@@ -1,0 +1,11 @@
+{
+  "name": "bhumi-kapoor-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bhumi Kapoor portfolio — static, dependency-free and Vercel ready",
+  "scripts": {
+    "dev": "node serve.cjs",
+    "start": "node serve.cjs",
+    "check": "node --check dist/script.js && node --check dist/portfolio.js"
+  }
+}

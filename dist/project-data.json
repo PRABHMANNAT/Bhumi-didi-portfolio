@@ -1,0 +1,92 @@
+[
+  {
+    "id": "drivesense",
+    "name": "DriveSense",
+    "category": "AI / ML",
+    "image": "mobility.jpg",
+    "label": "Funded startup",
+    "summary": "Turning an ambitious mobility idea into an incubated venture.",
+    "detail": "DriveSense won first place at TECH FUTURE 4.0 and received a ₹6.5 lakh startup grant from IIT Delhi and Delhi Incubator. It is a startup initiative built around bringing an ambitious mobility idea from concept into an incubated venture.",
+    "tools": [
+      "Startup",
+      "Innovation",
+      "Mobility"
+    ],
+    "note": "Editorial mobility photograph by Hayden Sack / Unsplash; not a DriveSense prototype."
+  },
+  {
+    "id": "ingenium",
+    "name": "Ingenium",
+    "category": "Products",
+    "image": "ingenium-team.jpg",
+    "label": "EdTech venture",
+    "summary": "Learning beyond the classroom. Built with purpose.",
+    "detail": "Ingenium is an education startup incubated with the University of Sydney and TBI Chandigarh University, with deployment in multiple schools. The team secured first prize at ThinkLab Ideathon 2025. The venture brings together product thinking, education and collaborative problem-solving.",
+    "tools": [
+      "EdTech",
+      "Product thinking",
+      "Teamwork"
+    ],
+    "note": "ThinkLab Ideathon team photo from Bhumi’s LinkedIn activity."
+  },
+  {
+    "id": "speech",
+    "name": "Spoken Language Identification",
+    "category": "AI / ML",
+    "image": "samsung.jpg",
+    "label": "Samsung PRISM",
+    "summary": "Making speech AI more robust across three languages.",
+    "detail": "As a Samsung PRISM intern and team leader, Bhumi contributed to three worklets covering Hindi, Urdu and Punjabi. The research focused on improving spoken Language Identification robustness using physical-access speaker-spoofed parallel databases, supported by data preparation, experimentation and evaluation.",
+    "tools": [
+      "NLP",
+      "Speech AI",
+      "Dataset development"
+    ],
+    "note": "Samsung PRISM certificate shared on LinkedIn."
+  },
+  {
+    "id": "tele",
+    "name": "Tele-Automobile System",
+    "category": "Research",
+    "image": "coding.jpg",
+    "label": "Award-winning research",
+    "summary": "Exploring connected systems through WSN and MATLAB.",
+    "detail": "Research on a real-time Tele-Automobile System using Wireless Sensor Networks and MATLAB. The work received first place in a research paper competition, exploring how connected systems and simulation can address practical engineering questions. Get in touch to discuss the research or request publication details.",
+    "tools": [
+      "WSN",
+      "MATLAB",
+      "Simulation"
+    ],
+    "note": "Editorial programming image; not a prototype photograph."
+  },
+  {
+    "id": "epi",
+    "name": "Mathematical Modelling in Epidemiology",
+    "category": "Research",
+    "image": "workspace.jpg",
+    "label": "Research publication",
+    "summary": "Using mathematical thinking to explore human impact.",
+    "detail": "This research explores mathematical modelling in epidemiology, connecting analytical thinking with questions about human impact. Get in touch to discuss the work and request the publication details.",
+    "tools": [
+      "Mathematical models",
+      "Research",
+      "Analytics"
+    ],
+    "note": "Editorial research workspace image."
+  },
+  {
+    "id": "automation",
+    "name": "Intelligent business workflows",
+    "category": "Automation",
+    "image": "night-code.jpg",
+    "label": "Current focus",
+    "summary": "Helping businesses work smarter with AI and automation.",
+    "detail": "Current work through Bhumi’s technology venture and professional internship explores AI chatbots, AI agents, websites and workflow automation. The focus is understanding business requirements and converting repetitive processes into practical digital systems.",
+    "tools": [
+      "AI agents",
+      "Automation",
+      "Web development"
+    ],
+    "note": "Editorial technology image; client work is discussed privately."
+  }
+]
