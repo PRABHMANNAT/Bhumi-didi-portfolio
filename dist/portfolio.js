@@ -77,7 +77,7 @@ window.addEventListener('resize',()=>memories.forEach(photo=>photo.resetPosition
 document.querySelector('#contact-form').addEventListener('submit',e=>{
   e.preventDefault();
   const values=new FormData(e.currentTarget);
-  const subject=`${values.get('interest')} — ${values.get('name')}`;
+  const subject=`Portfolio inquiry — ${values.get('name')}`;
   const body=`Hi Bhumi,\n\n${values.get('message')}\n\n${values.get('name')}\n${values.get('email')}`;
   window.location.href=`mailto:Bhumikapoor2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   document.querySelector('#form-status').textContent='Your email draft is ready in your email app. Review it and press Send there. If no app opened, use the email link beside this form.';
