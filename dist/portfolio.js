@@ -16,6 +16,7 @@ deck.addEventListener('pointerup', e => { if (swipeX !== null && Math.abs(e.clie
 deck.addEventListener('pointercancel', () => { swipeX = null; });
 deck.querySelectorAll('img').forEach(img => img.draggable = false);
 showPhoto(0);
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) window.setInterval(() => showPhoto(photoIndex + 1), 2000);
 
 // Project filtering and horizontal shelf.
 const shelf = document.querySelector('.project-shelf');

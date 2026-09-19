@@ -7,6 +7,7 @@ Reviewed on 12 September 2026.
 - `RESUME (2) (1).pdf`: education, CGPA, contact details, earlier roles, startup initiatives, research titles and competition awards. A copy is served as `dist/assets/bhumi-kapoor-resume.pdf`.
 - Pasted About / Experience copy: founder story, 35+ global clients, work since 10th standard, current unnamed AI/automation internship and broader career narrative.
 - The original portrait was supplied by the owner. Hero and skills presentation are preserved.
+- `about-pink-wall.jpeg`, `about-suited.jpeg`, and `about-iit-delhi.jpeg` were supplied by the owner for the rotating About gallery.
 - `contact-award.png` and `contact-medals.png` were supplied by the owner for the contact-section photo.
 - `badrinath-temple.jpg` was supplied by the owner for the contact form’s image card.
 - `badrinath-temple-himalayas.jpg` was supplied by the owner for the contact image rotation.
