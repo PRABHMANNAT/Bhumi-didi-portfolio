@@ -110,3 +110,4 @@ body>.site-floating-nav .connect>span{font-size:20px}
 @media(max-width:760px){.story-visual{margin-bottom:55px}.comet-card{width:min(88vw,340px)}}
 @media(prefers-reduced-motion:reduce){.comet-card{animation:none}.comet-card-inner{transform:none!important}.story-photo-stack img{transition:none}}
 .story-link{color:#d5c4ef;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}.story-link:hover,.story-link:focus-visible{color:#fff}
+.p-experience .p-heading>.p-kicker{font-size:clamp(18px,2.2vw,32px);line-height:1;letter-spacing:-.8px;text-transform:none;color:#f5f5ef}
