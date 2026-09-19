@@ -134,6 +134,10 @@ if(skillsHeadline&&!reducedMotion){
       headlineIndex=(headlineIndex+1)%skillsHeadlines.length;
       skillsHeadline.innerHTML=skillsHeadlines[headlineIndex];
       skillsHeadline.classList.remove('is-changing');
+      skillsHeadline.classList.remove('is-revealing');
+      void skillsHeadline.offsetWidth;
+      skillsHeadline.classList.add('is-revealing');
+      window.setTimeout(()=>skillsHeadline.classList.remove('is-revealing'),720);
     },260);
   },2000);
 }
