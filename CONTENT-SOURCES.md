@@ -59,6 +59,14 @@ Images are locally hosted so the deployable bundle does not depend on expiring i
 - `virtual-labs.svg` is an original code-drawn interface concept created for this portfolio; it does not reproduce the reference site screenshot.
 
 Reference screenshots and sites informed layout only; other portfolio owners' work, employment and endorsements were not attributed to Bhumi.
+
+## Case-study supporting images
+
+- `case-speech-spectrogram.jpg`: Dvortygirl and Mysid, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Human_voice_spectrogram.jpg
+- `case-wireless-network.gif`: Tuan DANG, public domain — https://commons.wikimedia.org/wiki/File:Topologie_OCARI.gif
+- `case-sir-model.svg`: Arthur Goldberg, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Diagram_of_SIR_epidemic_model_states_and_transition_rates.svg
+- `case-vehicle-routing.png`: PierreSelim, public domain — https://commons.wikimedia.org/wiki/File:Figure_illustrating_the_vehicle_routing_problem.png
+- `case-ecg.svg`: Stannered, public domain — https://commons.wikimedia.org/wiki/File:ECG_Paper.svg
 # Testimonial author portraits
 
 - `testimonial-prabh.png`, `testimonial-arnav.png`, and `testimonial-riya.png` were supplied by the owner for the testimonial quote avatars. Riya remains a clearly labeled fictional sample persona.

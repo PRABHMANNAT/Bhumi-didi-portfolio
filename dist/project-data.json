@@ -52,6 +52,15 @@
     "label": "Samsung PRISM",
     "summary": "Making speech AI more robust across three languages.",
     "detail": "As a Samsung PRISM intern and team leader, Bhumi contributed to three worklets covering Hindi, Urdu and Punjabi. The research focused on improving spoken Language Identification robustness using physical-access speaker-spoofed parallel databases, supported by data preparation, experimentation and evaluation.",
+    "story": [
+      "The work examined spoken-language identification across Hindi, Urdu and Punjabi, with an emphasis on conditions that make real-world speech classification more difficult.",
+      "A central challenge was preparing physical-access speaker-spoofed parallel data so experiments could compare authentic and replayed speech consistently across languages.",
+      "Bhumi coordinated the worklets, supported data preparation and evaluation, and helped keep the research process aligned across the three language tracks."
+    ],
+    "supportImage": "case-speech-spectrogram.jpg",
+    "supportAlt": "A human-voice spectrogram showing frequency intensity over time",
+    "supportSource": "https://commons.wikimedia.org/wiki/File:Human_voice_spectrogram.jpg",
+    "supportCredit": "Human voice spectrogram · Dvortygirl and Mysid · CC BY-SA 3.0",
     "tools": [
       "NLP",
       "Speech AI",
@@ -67,6 +76,15 @@
     "label": "Award-winning research",
     "summary": "Exploring connected systems through WSN and MATLAB.",
     "detail": "Research on a real-time Tele-Automobile System using Wireless Sensor Networks and MATLAB. The work received first place in a research paper competition, exploring how connected systems and simulation can address practical engineering questions. Get in touch to discuss the research or request publication details.",
+    "story": [
+      "This publication explores a real-time Tele-Automobile System built around wireless sensor networks and MATLAB-based simulation.",
+      "The research frames the vehicle as part of a connected environment in which sensors, roadside infrastructure and communication links exchange information.",
+      "The project received first place in a research-paper competition. Publication details and the full technical discussion are available on request."
+    ],
+    "supportImage": "case-wireless-network.gif",
+    "supportAlt": "Diagram of an OCARI wireless sensor network topology",
+    "supportSource": "https://commons.wikimedia.org/wiki/File:Topologie_OCARI.gif",
+    "supportCredit": "OCARI wireless sensor topology · Tuan DANG · Public domain",
     "tools": [
       "WSN",
       "MATLAB",
@@ -82,6 +100,15 @@
     "label": "Research publication",
     "summary": "Using mathematical thinking to explore human impact.",
     "detail": "This research explores mathematical modelling in epidemiology, connecting analytical thinking with questions about human impact. Get in touch to discuss the work and request the publication details.",
+    "story": [
+      "This publication studies how mathematical models can represent the movement of a population through susceptible, infectious and recovered states.",
+      "The modelling perspective helps turn assumptions about transmission and recovery into equations and curves that can be compared, questioned and refined.",
+      "The project connects analytical reasoning with public-health impact. Publication details and the complete model discussion are available on request."
+    ],
+    "supportImage": "case-sir-model.svg",
+    "supportAlt": "State diagram showing susceptible, infectious and recovered stages in an SIR model",
+    "supportSource": "https://commons.wikimedia.org/wiki/File:Diagram_of_SIR_epidemic_model_states_and_transition_rates.svg",
+    "supportCredit": "SIR state-transition diagram · Arthur Goldberg · CC BY-SA 4.0",
     "tools": [
       "Mathematical models",
       "Research",
@@ -97,6 +124,15 @@
     "label": "Research project",
     "summary": "Combining graph learning and swarm intelligence for complex route planning.",
     "detail": "A research project exploring a hybrid Graph Neural Network and Ant Colony Optimization approach for multi-depot vehicle route optimization. The work brings learned graph representations together with search-based optimization to investigate more effective routing decisions across multiple depots.",
+    "story": [
+      "The project explores a hybrid approach to the multi-depot vehicle-routing problem, where customers must be assigned and sequenced across more than one starting depot.",
+      "Graph Neural Networks offer a way to represent relationships between depots, customers and routes, while Ant Colony Optimization provides a search strategy inspired by collective trail formation.",
+      "Bringing the two ideas together creates a framework for investigating route quality, search efficiency and the trade-offs involved in complex distribution networks."
+    ],
+    "supportImage": "case-vehicle-routing.png",
+    "supportAlt": "Diagram illustrating a depot and multiple vehicle routes between customers",
+    "supportSource": "https://commons.wikimedia.org/wiki/File:Figure_illustrating_the_vehicle_routing_problem.png",
+    "supportCredit": "Vehicle-routing problem diagram · PierreSelim · Public domain",
     "tools": [
       "Graph Neural Networks",
       "Ant Colony Optimization",
@@ -112,6 +148,15 @@
     "label": "Machine learning project",
     "summary": "Exploring predictive models for diabetes and heart-disease risk.",
     "detail": "A machine learning project focused on medical disease risk prediction, with diabetes and heart disease as the core application areas. The work explores how structured health data can support earlier, data-informed risk assessment.",
+    "story": [
+      "This machine-learning project focuses on risk prediction for diabetes and heart disease using structured health indicators.",
+      "The workflow considers how clinical attributes can be prepared for modelling, how predictions should be evaluated, and how results can be communicated without presenting them as a medical diagnosis.",
+      "The interface concept brings risk scores, contributing factors and trends into one view, making the output easier to interpret while keeping clinical context central."
+    ],
+    "supportImage": "case-ecg.svg",
+    "supportAlt": "Diagram of a normal electrocardiogram waveform",
+    "supportSource": "https://commons.wikimedia.org/wiki/File:ECG_Paper.svg",
+    "supportCredit": "ECG diagram · Stannered · Public domain",
     "tools": [
       "Machine Learning",
       "Healthcare analytics",

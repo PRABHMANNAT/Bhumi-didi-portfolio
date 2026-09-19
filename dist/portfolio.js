@@ -38,16 +38,22 @@ let projectData;
 let dialogTrigger;
 const researchGrid=document.querySelector('.research-grid');
 researchGrid.insertAdjacentHTML('beforeend',`
-  <article><button data-project="gnn-aco-routing"><img src="assets/gnn-aco-route-optimization.png" alt="Route-optimization visualization showing depot-to-customer paths" loading="lazy" decoding="async"><small>Research project</small><h3>GNN–ACO Hybrid for Multi-Depot Vehicle Route Optimization</h3><p>Combining graph learning and swarm intelligence for complex route planning.</p><span class="author">BK <span>Bhumi Kapoor</span><b>↗</b></span></button></article>
-  <article><button data-project="disease-risk-prediction"><img src="assets/medical-disease-risk-prediction.png" alt="Medical disease-risk prediction dashboard showing diabetes and heart-disease insights" loading="lazy" decoding="async"><small>Machine learning project</small><h3>Medical Disease Risk Prediction</h3><p>Exploring predictive models for diabetes and heart-disease risk.</p><span class="author">BK <span>Bhumi Kapoor</span><b>↗</b></span></button></article>
+  <article><button data-project="gnn-aco-routing"><img src="assets/gnn-aco-route-optimization.png" alt="Route-optimization visualization showing depot-to-customer paths" loading="lazy" decoding="async"><small>Research project</small><h3>GNN–ACO Hybrid for Multi-Depot Vehicle Route Optimization</h3><p>Combining graph learning and swarm intelligence for complex route planning.</p></button></article>
+  <article><button data-project="disease-risk-prediction"><img src="assets/medical-disease-risk-prediction.png" alt="Medical disease-risk prediction dashboard showing diabetes and heart-disease insights" loading="lazy" decoding="async"><small>Machine learning project</small><h3>Medical Disease Risk Prediction</h3><p>Exploring predictive models for diabetes and heart-disease risk.</p></button></article>
 `);
+const researchHeading=document.querySelector('.p-research .p-heading');
+researchHeading.innerHTML=`<div class="research-heading-copy"><p class="p-kicker">07 — Research library</p><h2>Case Studies<br><em>&amp; Publications.</em></h2><p>Five explorations across speech AI, connected mobility, mathematical modelling, optimization and healthcare intelligence.</p></div><aside><strong>05</strong><span>Selected works</span><small>Open any card for the full story</small></aside>`;
+researchGrid.querySelectorAll('.author').forEach(author=>author.remove());
+researchGrid.querySelectorAll('button').forEach(button=>button.insertAdjacentHTML('beforeend','<span class="research-cta">Explore case study <b>↗</b></span>'));
 async function openProject(button) {
   dialogTrigger = button;
   try {
     projectData ||= await fetch('project-data.json').then(r => { if (!r.ok) throw new Error('Project data unavailable'); return r.json(); });
     const p = projectData.find(p=>p.id===button.dataset.project);
     if (!p) return;
-    document.querySelector('#dialog-content').innerHTML = `<img class="dialog-image" src="assets/${escapeHTML(p.image)}" alt="${escapeHTML(p.note)}"><div class="dialog-body"><small>${escapeHTML(p.label)}</small><h2 id="dialog-title">${escapeHTML(p.name)}</h2><p>${escapeHTML(p.detail)}</p><div class="p-tags">${p.tools.map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div><p><small>${escapeHTML(p.note)}</small></p><a class="small-pill" href="mailto:Bhumikapoor2005@gmail.com?subject=${encodeURIComponent('Tell me more about '+p.name)}">Ask about this work ↗</a></div>`;
+    const story=(Array.isArray(p.story)&&p.story.length?p.story:[p.detail]).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('');
+    const supporting=p.supportImage?`<figure class="dialog-support"><img src="assets/${escapeHTML(p.supportImage)}" alt="${escapeHTML(p.supportAlt)}"><figcaption>${escapeHTML(p.supportCredit)} · <a href="${escapeHTML(p.supportSource)}" target="_blank" rel="noreferrer">View source ↗</a></figcaption></figure>`:'';
+    document.querySelector('#dialog-content').innerHTML = `<header class="dialog-hero"><img class="dialog-image" src="assets/${escapeHTML(p.image)}" alt="${escapeHTML(p.note)}"><div><small>${escapeHTML(p.label)}</small><h2 id="dialog-title">${escapeHTML(p.name)}</h2></div></header><div class="dialog-body"><p class="dialog-summary">${escapeHTML(p.summary)}</p><div class="dialog-story">${story}</div>${supporting}<div class="dialog-footer"><div class="p-tags">${p.tools.map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div><a class="small-pill" href="mailto:Bhumikapoor2005@gmail.com?subject=${encodeURIComponent('Tell me more about '+p.name)}">Ask about this work ↗</a></div></div>`;
   } catch {
     document.querySelector('#dialog-content').innerHTML = '<div class="dialog-body"><h2 id="dialog-title">Project details unavailable</h2><p>Please try again or email Bhumi for more information.</p><a href="mailto:Bhumikapoor2005@gmail.com">Email Bhumi ↗</a></div>';
   }
