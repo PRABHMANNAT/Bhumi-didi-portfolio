@@ -142,3 +142,59 @@ if(skillsHeadline&&!reducedMotion){
     },260);
   },2000);
 }
+
+// Comet card: pointer-responsive depth, rotating owner-supplied photos and accessible metrics.
+const cometCard=document.querySelector('.comet-card');
+const cometCardInner=cometCard?.querySelector('.comet-card-inner');
+if(cometCard&&cometCardInner&&!reducedMotion){
+  cometCard.addEventListener('pointermove',event=>{
+    const bounds=cometCard.getBoundingClientRect();
+    const x=(event.clientX-bounds.left)/bounds.width-.5;
+    const y=(event.clientY-bounds.top)/bounds.height-.5;
+    cometCardInner.style.setProperty('--rx',`${-y*17.5}deg`);
+    cometCardInner.style.setProperty('--ry',`${x*17.5}deg`);
+    cometCardInner.style.setProperty('--tx',`${x*20}px`);
+    cometCardInner.style.setProperty('--ty',`${-y*20}px`);
+    cometCardInner.style.setProperty('--gx',`${(x+.5)*100}%`);
+    cometCardInner.style.setProperty('--gy',`${(y+.5)*100}%`);
+  });
+  cometCard.addEventListener('pointerleave',()=>{
+    ['--rx','--ry','--tx','--ty','--gx','--gy'].forEach(property=>cometCardInner.style.removeProperty(property));
+  });
+}
+const storyFrames=[...document.querySelectorAll('.story-photo-stack img')];
+if(storyFrames.length){
+  let storyFrame=0;
+  storyFrames.forEach((frame,index)=>frame.setAttribute('aria-hidden',String(index!==0)));
+  if(!reducedMotion) window.setInterval(()=>{
+    storyFrames[storyFrame].classList.remove('is-active');
+    storyFrames[storyFrame].setAttribute('aria-hidden','true');
+    storyFrame=(storyFrame+1)%storyFrames.length;
+    storyFrames[storyFrame].classList.add('is-active');
+    storyFrames[storyFrame].setAttribute('aria-hidden','false');
+    document.querySelector('#story-photo-count').textContent=`${String(storyFrame+1).padStart(2,'0')} / ${String(storyFrames.length).padStart(2,'0')}`;
+  },2000);
+}
+const counters=[...document.querySelectorAll('[data-count]')];
+const setCounterValue=(counter,value)=>{
+  const decimals=Number(counter.dataset.decimals||0);
+  counter.textContent=`${value.toFixed(decimals)}${counter.dataset.suffix||''}`;
+};
+const animateCounter=counter=>{
+  const target=Number(counter.dataset.count);
+  if(reducedMotion){setCounterValue(counter,target);return;}
+  const started=performance.now();
+  const tick=now=>{
+    const progress=Math.min((now-started)/1400,1);
+    const eased=1-Math.pow(1-progress,3);
+    setCounterValue(counter,target*eased);
+    if(progress<1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+if('IntersectionObserver' in window){
+  const counterObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){animateCounter(entry.target);counterObserver.unobserve(entry.target);}
+  }),{threshold:.6});
+  counters.forEach(counter=>counterObserver.observe(counter));
+}else counters.forEach(animateCounter);
