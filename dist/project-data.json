@@ -63,7 +63,7 @@
     "id": "tele",
     "name": "Tele-Automobile System",
     "category": "Research",
-    "image": "coding.jpg",
+    "image": "tele-automobile-system.jpg",
     "label": "Award-winning research",
     "summary": "Exploring connected systems through WSN and MATLAB.",
     "detail": "Research on a real-time Tele-Automobile System using Wireless Sensor Networks and MATLAB. The work received first place in a research paper competition, exploring how connected systems and simulation can address practical engineering questions. Get in touch to discuss the research or request publication details.",
@@ -72,13 +72,13 @@
       "MATLAB",
       "Simulation"
     ],
-    "note": "Editorial programming image; not a prototype photograph."
+    "note": "Illustration of a connected vehicle communication system."
   },
   {
     "id": "epi",
     "name": "Mathematical Modelling in Epidemiology",
     "category": "Research",
-    "image": "workspace.jpg",
+    "image": "epidemiology-modelling.png",
     "label": "Research publication",
     "summary": "Using mathematical thinking to explore human impact.",
     "detail": "This research explores mathematical modelling in epidemiology, connecting analytical thinking with questions about human impact. Get in touch to discuss the work and request the publication details.",
@@ -87,7 +87,37 @@
       "Research",
       "Analytics"
     ],
-    "note": "Editorial research workspace image."
+    "note": "Mathematical modelling in epidemiology displayed on a research workstation."
+  },
+  {
+    "id": "gnn-aco-routing",
+    "name": "GNN–ACO Hybrid for Multi-Depot Vehicle Route Optimization",
+    "category": "Research",
+    "image": "gnn-aco-route-optimization.png",
+    "label": "Research project",
+    "summary": "Combining graph learning and swarm intelligence for complex route planning.",
+    "detail": "A research project exploring a hybrid Graph Neural Network and Ant Colony Optimization approach for multi-depot vehicle route optimization. The work brings learned graph representations together with search-based optimization to investigate more effective routing decisions across multiple depots.",
+    "tools": [
+      "Graph Neural Networks",
+      "Ant Colony Optimization",
+      "Vehicle routing"
+    ],
+    "note": "Route-optimization visualization showing depot-to-customer paths."
+  },
+  {
+    "id": "disease-risk-prediction",
+    "name": "Medical Disease Risk Prediction",
+    "category": "Research",
+    "image": "medical-disease-risk-prediction.png",
+    "label": "Machine learning project",
+    "summary": "Exploring predictive models for diabetes and heart-disease risk.",
+    "detail": "A machine learning project focused on medical disease risk prediction, with diabetes and heart disease as the core application areas. The work explores how structured health data can support earlier, data-informed risk assessment.",
+    "tools": [
+      "Machine Learning",
+      "Healthcare analytics",
+      "Risk prediction"
+    ],
+    "note": "Medical disease-risk prediction dashboard showing diabetes and heart-disease insights."
   },
   {
     "id": "automation",

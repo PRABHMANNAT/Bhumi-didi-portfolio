@@ -36,6 +36,11 @@ const dialog = document.querySelector('#project-dialog');
 const escapeHTML = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let projectData;
 let dialogTrigger;
+const researchGrid=document.querySelector('.research-grid');
+researchGrid.insertAdjacentHTML('beforeend',`
+  <article><button data-project="gnn-aco-routing"><img src="assets/gnn-aco-route-optimization.png" alt="Route-optimization visualization showing depot-to-customer paths" loading="lazy" decoding="async"><small>Research project</small><h3>GNN–ACO Hybrid for Multi-Depot Vehicle Route Optimization</h3><p>Combining graph learning and swarm intelligence for complex route planning.</p><span class="author">BK <span>Bhumi Kapoor</span><b>↗</b></span></button></article>
+  <article><button data-project="disease-risk-prediction"><img src="assets/medical-disease-risk-prediction.png" alt="Medical disease-risk prediction dashboard showing diabetes and heart-disease insights" loading="lazy" decoding="async"><small>Machine learning project</small><h3>Medical Disease Risk Prediction</h3><p>Exploring predictive models for diabetes and heart-disease risk.</p><span class="author">BK <span>Bhumi Kapoor</span><b>↗</b></span></button></article>
+`);
 async function openProject(button) {
   dialogTrigger = button;
   try {
