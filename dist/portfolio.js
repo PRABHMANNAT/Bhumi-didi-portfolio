@@ -123,3 +123,17 @@ document.querySelectorAll('.skill-icon').forEach(icon=>{
   const match=Object.keys(skillIconSources).find(slug=>icon.src.includes(`/${slug}/`));
   if(match) icon.src=skillIconSources[match];
 });
+const skillsHeadline=document.querySelector('#about>h2');
+const skillsHeadlines=['I turn data into<br>real world impact','My tech stack.<br>My skills.'];
+if(skillsHeadline&&!reducedMotion){
+  let headlineIndex=0;
+  skillsHeadline.classList.add('skills-headline');
+  window.setInterval(()=>{
+    skillsHeadline.classList.add('is-changing');
+    window.setTimeout(()=>{
+      headlineIndex=(headlineIndex+1)%skillsHeadlines.length;
+      skillsHeadline.innerHTML=skillsHeadlines[headlineIndex];
+      skillsHeadline.classList.remove('is-changing');
+    },260);
+  },2000);
+}
