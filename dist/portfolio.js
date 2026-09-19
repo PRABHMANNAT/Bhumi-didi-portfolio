@@ -102,3 +102,13 @@ if(!reducedMotion && 'IntersectionObserver' in window){
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target);}}),{threshold:.08});
   document.querySelectorAll('.p-heading,.cert-card,.research-grid article,.awards-grid article').forEach(el=>{el.classList.add('motion-enter');observer.observe(el);});
 }
+const skillIconSources={
+  matplotlib:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg',
+  microsoftexcel:'https://img.icons8.com/color/48/microsoft-excel-2019--v1.png',
+  powerbi:'https://img.icons8.com/color/48/power-bi.png',
+  tableau:'https://img.icons8.com/color/48/tableau-software.png'
+};
+document.querySelectorAll('.skill-icon').forEach(icon=>{
+  const match=Object.keys(skillIconSources).find(slug=>icon.src.includes(`/${slug}/`));
+  if(match) icon.src=skillIconSources[match];
+});
