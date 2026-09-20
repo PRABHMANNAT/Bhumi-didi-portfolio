@@ -52,7 +52,7 @@
     "category": "AI / ML",
     "image": "samsung.jpg",
     "label": "Samsung PRISM",
-    "summary": "Making speech AI more robust across three languages.",
+    "summary": "Samsung PRISM research using careful speech-data preparation and model evaluation across three languages.",
     "detail": "As a Samsung PRISM intern and team leader, Bhumi contributed to three worklets covering Hindi, Urdu and Punjabi. The research focused on improving spoken Language Identification robustness using physical-access speaker-spoofed parallel databases, supported by data preparation, experimentation and evaluation.",
     "story": [
       "The work examined spoken-language identification across Hindi, Urdu and Punjabi, with an emphasis on conditions that make real-world speech classification more difficult.",
@@ -65,15 +65,16 @@
     "supportCredit": "Human voice spectrogram · Dvortygirl and Mysid · CC BY-SA 3.0",
     "tools": [
       "NLP",
-      "Speech AI",
-      "Dataset development"
+      "Speech-data preparation",
+      "Feature analysis",
+      "Model evaluation"
     ],
     "note": "Samsung PRISM certificate shared on LinkedIn."
   },
   {
     "id": "tele",
     "name": "Tele-Automobile System",
-    "category": "Research",
+    "category": "AI / ML",
     "image": "tele-automobile-system.jpg",
     "label": "Award-winning research",
     "summary": "Exploring connected systems through WSN and MATLAB.",
@@ -148,8 +149,8 @@
     "category": "Research",
     "image": "medical-disease-risk-prediction.png",
     "label": "Machine learning project",
-    "summary": "Exploring predictive models for diabetes and heart-disease risk.",
-    "detail": "A machine learning project focused on medical disease risk prediction, with diabetes and heart disease as the core application areas. The work explores how structured health data can support earlier, data-informed risk assessment.",
+    "summary": "A machine-learning exploration of diabetes and heart-disease risk indicators using structured health data.",
+    "detail": "A machine-learning project focused on diabetes and heart-disease risk indicators. The work explores how structured health data can be prepared for interpretable inputs, how predictive approaches can be compared, and how early risk signals can be presented responsibly for review rather than diagnosis.",
     "story": [
       "This machine-learning project focuses on risk prediction for diabetes and heart disease using structured health indicators.",
       "The workflow considers how clinical attributes can be prepared for modelling, how predictions should be evaluated, and how results can be communicated without presenting them as a medical diagnosis.",
@@ -160,24 +161,26 @@
     "supportSource": "https://commons.wikimedia.org/wiki/File:ECG_Paper.svg",
     "supportCredit": "ECG diagram · Stannered · Public domain",
     "tools": [
-      "Machine Learning",
-      "Healthcare analytics",
-      "Risk prediction"
+      "Data preprocessing",
+      "Predictive modelling",
+      "Evaluation metrics",
+      "Data visualisation"
     ],
     "note": "Medical disease-risk prediction dashboard showing diabetes and heart-disease insights."
   },
   {
     "id": "automation",
-    "name": "Intelligent business workflows",
+    "name": "Operations Automation Studio",
     "category": "Automation",
     "image": "night-code.jpg",
     "label": "Current focus",
-    "summary": "Helping businesses work smarter with AI and automation.",
-    "detail": "Current work through Bhumi’s technology venture and professional internship explores AI chatbots, AI agents, websites and workflow automation. The focus is understanding business requirements and converting repetitive processes into practical digital systems.",
+    "summary": "A practical automation initiative for mapping repetitive business work into dependable connected flows.",
+    "detail": "Current work through Bhumi’s technology venture and professional internship explores how business handoffs, follow-ups and information gaps can be translated into practical automated systems. The focus is understanding requirements, mapping workflows and shaping solutions that teams can adopt in everyday work.",
     "tools": [
-      "AI agents",
-      "Automation",
-      "Web development"
+      "Process mapping",
+      "Automation design",
+      "Requirements analysis",
+      "Workflow optimisation"
     ],
     "note": "Editorial technology image; client work is discussed privately."
   }
