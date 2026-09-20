@@ -216,3 +216,38 @@ if(storyHeadline&&!reducedMotion){
     },200);
   },1500);
 }
+
+const storyPlaces=[...document.querySelectorAll('.story-place')];
+const locationTooltip=document.querySelector('.story-location-tooltip');
+if(storyPlaces.length&&locationTooltip){
+  const tooltipImage=locationTooltip.querySelector('img');
+  const tooltipLabel=locationTooltip.querySelector('span');
+  const positionTooltip=(x,y)=>{
+    const gap=18;
+    const left=Math.max(12,Math.min(x+gap,window.innerWidth-locationTooltip.offsetWidth-12));
+    const top=Math.max(12,Math.min(y+gap,window.innerHeight-locationTooltip.offsetHeight-12));
+    locationTooltip.style.left=`${left}px`;
+    locationTooltip.style.top=`${top}px`;
+  };
+  const showTooltip=(place,x,y)=>{
+    tooltipImage.src=place.dataset.image;
+    tooltipLabel.textContent=place.dataset.place;
+    locationTooltip.classList.add('is-visible');
+    locationTooltip.setAttribute('aria-hidden','false');
+    positionTooltip(x,y);
+  };
+  const hideTooltip=()=>{
+    locationTooltip.classList.remove('is-visible');
+    locationTooltip.setAttribute('aria-hidden','true');
+  };
+  storyPlaces.forEach(place=>{
+    place.addEventListener('pointerenter',event=>showTooltip(place,event.clientX,event.clientY));
+    place.addEventListener('pointermove',event=>positionTooltip(event.clientX,event.clientY));
+    place.addEventListener('pointerleave',hideTooltip);
+    place.addEventListener('focus',()=>{
+      const rect=place.getBoundingClientRect();
+      showTooltip(place,rect.left+rect.width/2,rect.bottom);
+    });
+    place.addEventListener('blur',hideTooltip);
+  });
+}
