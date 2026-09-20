@@ -198,3 +198,21 @@ if('IntersectionObserver' in window){
   }),{threshold:.6});
   counters.forEach(counter=>counterObserver.observe(counter));
 }else counters.forEach(animateCounter);
+
+const storyHeadline=document.querySelector('#my-story .story-headline');
+const storyHeadlines=['About<br><span>Us.</span>','I connect people,<br><span>data & ideas.</span>'];
+if(storyHeadline&&!reducedMotion){
+  let storyHeadlineIndex=0;
+  window.setInterval(()=>{
+    storyHeadline.classList.add('is-changing');
+    window.setTimeout(()=>{
+      storyHeadlineIndex=(storyHeadlineIndex+1)%storyHeadlines.length;
+      storyHeadline.innerHTML=storyHeadlines[storyHeadlineIndex];
+      storyHeadline.classList.remove('is-changing');
+      storyHeadline.classList.remove('is-revealing');
+      void storyHeadline.offsetWidth;
+      storyHeadline.classList.add('is-revealing');
+      window.setTimeout(()=>storyHeadline.classList.remove('is-revealing'),560);
+    },200);
+  },1500);
+}
