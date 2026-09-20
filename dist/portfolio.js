@@ -195,6 +195,21 @@ dialog.addEventListener('close',()=>{document.body.style.overflow='';dialogTrigg
 const board = document.querySelector('.memory-board');
 let topPhoto = 5;
 const memories = [...board.querySelectorAll('.memory')];
+const achievementPhotos = [
+  { image: 'academic-achiever-2025-award.jpeg', alt: 'Bhumi receiving the Academic Achiever 2025 award', caption: 'Academic Achiever · 2025' },
+  { image: 'best-paper-presentation-award.jpeg', alt: 'Bhumi holding best paper presentation winner certificates and medals', caption: 'Best Paper Presentation · Winner' },
+  { image: 'smart-tech-ideathon-winner.png', alt: 'Smart Tech Ideathon winners holding their trophy', caption: 'Smart Tech Ideathon · Winner' },
+  { image: 'exemplary-achiever-award.jpeg', alt: 'Bhumi receiving the Exemplary Achiever award', caption: 'Exemplary Achiever · 2026' }
+];
+memories.forEach((photo, index) => {
+  const achievement = achievementPhotos[index];
+  if (!achievement) return;
+  const image = photo.querySelector('img');
+  image.src = `assets/${achievement.image}`;
+  image.alt = achievement.alt;
+  photo.querySelector('span').textContent = achievement.caption;
+  photo.setAttribute('aria-label', `Move photo: ${achievement.caption}. Use arrow keys.`);
+});
 memories.forEach(photo=>{
   let position={x:0,y:0},start=null;
   function move(x,y){

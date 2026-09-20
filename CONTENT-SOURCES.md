@@ -20,6 +20,7 @@ Reviewed on 12 September 2026.
 - `operations-automation.png` and `workflow-automation.png` were supplied by the owner for the Automation project cards.
 - `student-opportunity-hub.png` and `client-delivery-portal.png` were supplied by the owner for the Product project cards.
 - `spoken-language-identification.png`, `medical-risk-software.png` and `ai-copilot.png` were supplied by the owner for the AI / ML project cards.
+- `academic-achiever-2025-award.jpeg`, `best-paper-presentation-award.jpeg`, `smart-tech-ideathon-winner.png` and `exemplary-achiever-award.jpeg` were supplied by the owner for the achievement photo board.
 - `amritsar-golden-temple.png` and `chandigarh-university.png` were supplied by the owner for the pointer-following location cards in the About story.
 - `contact-award.png` and `contact-medals.png` were supplied by the owner for the contact-section photo.
 - `badrinath-temple.jpg` was supplied by the owner for the contact form’s image card.
