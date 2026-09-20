@@ -18,6 +18,11 @@ deck.querySelectorAll('img').forEach(img => img.draggable = false);
 showPhoto(0);
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches) window.setInterval(() => showPhoto(photoIndex + 1), 2000);
 
+// Add the owner-supplied Ingen Labs internship to the experience timeline.
+const experienceTable = document.querySelector('.experience-table');
+const samsungExperience = [...experienceTable.querySelectorAll('.experience-row')].find(row => row.querySelector('strong')?.textContent.trim() === 'Samsung R&D Institute, Bangalore');
+if (samsungExperience) samsungExperience.insertAdjacentHTML('afterend', `<details class="experience-row"><summary><strong>Ingen Labs</strong><span>Business Analyst &amp; Marketing Intern</span><time>Jul 2025 — Dec 2025</time><b>＋</b></summary><div class="experience-detail"><p>Supported business analysis and marketing initiatives at Ingen Labs, translating audience and project needs into clear research, outreach and communication plans throughout a six-month internship.</p><small>Business analysis · Marketing · Research · Communication</small></div></details>`);
+
 // Project filtering and horizontal shelf.
 const shelf = document.querySelector('.project-shelf');
 const tiles = [...shelf.querySelectorAll('.project-tile')];
