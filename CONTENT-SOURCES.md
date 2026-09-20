@@ -9,6 +9,7 @@ Reviewed on 12 September 2026.
 - The original portrait was supplied by the owner. Hero and skills presentation are preserved.
 - `about-pink-wall.jpeg`, `about-suited.jpeg`, and `about-iit-delhi.jpeg` were supplied by the owner for the rotating About gallery.
 - `story-community-service.jpeg`, `story-university-leadership.jpeg`, `story-medals.jpeg`, and `story-medals-closeup.jpeg` were supplied by the owner for the About-story Comet Card.
+- `campus-sync.png` was supplied by the owner for the Campus Sync project card.
 - `amritsar-golden-temple.png` and `chandigarh-university.png` were supplied by the owner for the pointer-following location cards in the About story.
 - `contact-award.png` and `contact-medals.png` were supplied by the owner for the contact-section photo.
 - `badrinath-temple.jpg` was supplied by the owner for the contact form’s image card.
