@@ -212,6 +212,34 @@ memories.forEach(photo=>{
 document.querySelector('#reset-memories').addEventListener('click',()=>memories.forEach(photo=>photo.resetPosition()));
 window.addEventListener('resize',()=>memories.forEach(photo=>photo.resetPosition()));
 
+// Refresh the achievements message and let it arrive as a short, deliberate typed line.
+const achievementsHeading = document.querySelector('#achievements .p-heading > div');
+if (achievementsHeading) achievementsHeading.innerHTML = '<h2>Achievements.<br><em>Awards.</em></h2><p class="achievement-intro">A few milestones that reflect curiosity, consistency, and the courage to keep building what matters.</p>';
+const achievementIntro = document.querySelector('.achievement-intro');
+if (achievementIntro && !reducedMotion) {
+  const achievementMessage = achievementIntro.textContent.trim();
+  let achievementCharacter = 0;
+  achievementIntro.textContent = '';
+  achievementIntro.setAttribute('aria-label', achievementMessage);
+  const typeAchievementIntro = () => {
+    achievementIntro.textContent = achievementMessage.slice(0, achievementCharacter);
+    if (achievementCharacter < achievementMessage.length) {
+      achievementCharacter += 1;
+      window.setTimeout(typeAchievementIntro, 24);
+      return;
+    }
+    achievementIntro.insertAdjacentHTML('beforeend', '<span class="type-cursor" aria-hidden="true">|</span>');
+  };
+  if ('IntersectionObserver' in window) {
+    const achievementObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      achievementObserver.unobserve(entry.target);
+      typeAchievementIntro();
+    }), { threshold: 0.45 });
+    achievementObserver.observe(achievementIntro);
+  } else typeAchievementIntro();
+}
+
 document.querySelector('#contact-form').addEventListener('submit',e=>{
   e.preventDefault();
   const sendButton=e.currentTarget.querySelector('.send-button');
