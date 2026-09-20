@@ -200,7 +200,7 @@ if('IntersectionObserver' in window){
 }else counters.forEach(animateCounter);
 
 const storyHeadline=document.querySelector('#my-story .story-headline');
-const storyHeadlines=['About<br><span>Us.</span>','I connect people,<br><span>data & ideas.</span>'];
+const storyHeadlines=['About <span>Us.</span>','I connect people,<br><span>data & ideas.</span>'];
 if(storyHeadline&&!reducedMotion){
   let storyHeadlineIndex=0;
   window.setInterval(()=>{
