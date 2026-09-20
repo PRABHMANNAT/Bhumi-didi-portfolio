@@ -45,7 +45,7 @@ const projectCards = [
   { category: 'Full-stack', image: 'team-workspace.png', alt: 'Team Workspace project-management dashboard with task columns, team members and collaboration controls', title: 'Team Workspace', description: 'A full-stack collaboration workspace concept that brings projects, tasks and decisions into one shared view. The dashboard combines clear ownership, scheduling, discussion threads and progress signals so teams can move from planning to delivery with less friction.', skills: 'Dashboard UX · Task management · Collaboration flows · Workflow architecture' }
 ];
 const projectCard = card => `<article class="project-tile" data-category="${card.category}">${card.project ? `<button data-project="${card.project}">` : '<div class="project-tile-content">'}${card.image ? `<img src="assets/${card.image}" alt="${card.alt}" loading="lazy" decoding="async">` : `<div class="project-placeholder" aria-hidden="true">${card.placeholder.replace('\n', '<br>')}</div>`}<h3>${card.title}</h3>${card.role ? `<p class="project-role"><strong>Role:</strong> ${card.role}</p>` : ''}<p>${card.description}</p>${card.skills ? `<p class="project-skills"><strong>Focus areas:</strong> ${card.skills}</p>` : ''}${card.url ? `<a class="project-site" href="${card.url}" target="_blank" rel="noreferrer">${card.linkLabel || 'Visit website'} ↗</a>` : ''}${card.project ? '</button>' : '</div>'}</article>`;
-document.querySelector('#all-projects').innerHTML = `<div class="catalog-heading"><div><h2>My projects<span>.</span></h2></div><div class="shelf-controls"><button aria-label="Scroll projects left"><span>←</span></button><button aria-label="Scroll projects right"><span>→</span></button></div></div><div class="project-filters" role="group" aria-label="Filter projects"><button data-filter="All" aria-pressed="true">All</button><button data-filter="AI / ML" aria-pressed="false">AI / ML</button><button data-filter="Startups" aria-pressed="false">Startups</button><button data-filter="Products" aria-pressed="false">Products</button><button data-filter="Research" aria-pressed="false">Research</button><button data-filter="Automation" aria-pressed="false">Automation</button><button data-filter="Data" aria-pressed="false">Data</button><button data-filter="Full-stack" aria-pressed="false">Full-stack</button></div><div class="project-shelf" tabindex="0" aria-label="Project cards">${projectCards.map(projectCard).join('')}</div><p class="shelf-hint">Swipe through the cards—or use the arrows—to explore the work.</p>`;
+document.querySelector('#all-projects').innerHTML = `<div class="catalog-heading"><div><h2>My projects<span>.</span></h2></div><div class="shelf-controls"><button aria-label="Scroll projects left"><span>←</span></button><button aria-label="Scroll projects right"><span>→</span></button></div></div><div class="project-filters" role="group" aria-label="Filter projects"><button data-filter="All" aria-pressed="true">All</button><button data-filter="Data" aria-pressed="false">Data</button><button data-filter="Full-stack" aria-pressed="false">Full-stack</button><button data-filter="Startups" aria-pressed="false">Startups</button><button data-filter="AI / ML" aria-pressed="false">AI / ML</button><button data-filter="Products" aria-pressed="false">Products</button><button data-filter="Research" aria-pressed="false">Research</button><button data-filter="Automation" aria-pressed="false">Automation</button></div><div class="project-shelf" tabindex="0" aria-label="Project cards">${projectCards.map(projectCard).join('')}</div><p class="shelf-hint">Swipe through the cards—or use the arrows—to explore the work.</p>`;
 const shelf = document.querySelector('.project-shelf');
 const tiles = [...shelf.querySelectorAll('.project-tile')];
 let shelfDrag = null;
@@ -63,6 +63,7 @@ const endShelfDrag = event => {
 };
 shelf.addEventListener('pointerdown', event => {
   if (event.pointerType === 'mouse' && event.button !== 0) return;
+  pauseShelfMarquee();
   shelfDrag = { pointerId: event.pointerId, startX: event.clientX, startLeft: shelf.scrollLeft, didDrag: false };
   shelf.setPointerCapture(event.pointerId);
 });
@@ -85,8 +86,49 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
   document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
   tiles.forEach(tile => tile.hidden = button.dataset.filter !== 'All' && tile.dataset.category !== button.dataset.filter);
   shelf.scrollTo({left:0,behavior:'instant'});
+  resumeShelfMarquee();
 }));
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let shelfMarqueeDirection = 1;
+let shelfMarqueePaused = reducedMotion;
+let shelfMarqueeResumeTimer;
+let shelfMarqueeLastFrame;
+const pauseShelfMarquee = () => {
+  shelfMarqueePaused = true;
+  window.clearTimeout(shelfMarqueeResumeTimer);
+};
+const resumeShelfMarquee = () => {
+  if (reducedMotion) return;
+  window.clearTimeout(shelfMarqueeResumeTimer);
+  shelfMarqueeResumeTimer = window.setTimeout(() => {
+    shelfMarqueePaused = false;
+    shelfMarqueeLastFrame = undefined;
+  }, 1600);
+};
+const moveShelfMarquee = time => {
+  if (!shelfMarqueePaused) {
+    if (shelfMarqueeLastFrame !== undefined) {
+      const maxScroll = shelf.scrollWidth - shelf.clientWidth;
+      if (maxScroll > 0) {
+        const step = Math.min((time - shelfMarqueeLastFrame) * 0.018, 1.2);
+        const next = shelf.scrollLeft + step * shelfMarqueeDirection;
+        if (next >= maxScroll || next <= 0) shelfMarqueeDirection *= -1;
+        shelf.scrollLeft = Math.max(0, Math.min(maxScroll, next));
+      }
+    }
+    shelfMarqueeLastFrame = time;
+  }
+  window.requestAnimationFrame(moveShelfMarquee);
+};
+if (!reducedMotion) {
+  window.requestAnimationFrame(moveShelfMarquee);
+  shelf.addEventListener('pointerup', resumeShelfMarquee);
+  shelf.addEventListener('pointercancel', resumeShelfMarquee);
+  shelf.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') pauseShelfMarquee(); });
+  shelf.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') resumeShelfMarquee(); });
+  shelf.addEventListener('focusin', pauseShelfMarquee);
+  shelf.addEventListener('focusout', resumeShelfMarquee);
+}
 const projectTitle = document.querySelector('#all-projects .catalog-heading h2');
 if (projectTitle && !reducedMotion) {
   const projectTitlePhrases = ['My projects', 'Selected work'];
