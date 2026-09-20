@@ -172,16 +172,16 @@
     "id": "automation",
     "name": "Operations Automation Studio",
     "category": "Automation",
-    "image": "night-code.jpg",
+    "image": "operations-automation.png",
     "label": "Current focus",
     "summary": "A practical automation initiative for mapping repetitive business work into dependable connected flows.",
-    "detail": "Current work through Bhumi’s technology venture and professional internship explores how business handoffs, follow-ups and information gaps can be translated into practical automated systems. The focus is understanding requirements, mapping workflows and shaping solutions that teams can adopt in everyday work.",
+    "detail": "Current work through Bhumi’s technology venture and professional internship explores how business handoffs, follow-ups and information gaps can be translated into practical automated systems. The operations concept brings compliance activity, key dates, records and validation steps into one visible workflow so teams can move from scattered follow-ups to measurable progress.",
     "tools": [
       "Process mapping",
       "Automation design",
       "Requirements analysis",
       "Workflow optimisation"
     ],
-    "note": "Editorial technology image; client work is discussed privately."
+    "note": "Operations automation interface supplied by the portfolio owner."
   }
 ]

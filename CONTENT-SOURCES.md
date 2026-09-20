@@ -17,6 +17,7 @@ Reviewed on 12 September 2026.
 - `drivesense-iit-delhi.jpeg` was supplied by the owner for the DriveSense project card.
 - `ingen-workspace.png` was supplied by the owner for the Ingen Workspace project card.
 - `webstell-studio.png` was supplied by the owner for the Webstell Studio project card.
+- `operations-automation.png` and `workflow-automation.png` were supplied by the owner for the Automation project cards.
 - `amritsar-golden-temple.png` and `chandigarh-university.png` were supplied by the owner for the pointer-following location cards in the About story.
 - `contact-award.png` and `contact-medals.png` were supplied by the owner for the contact-section photo.
 - `badrinath-temple.jpg` was supplied by the owner for the contact form’s image card.
