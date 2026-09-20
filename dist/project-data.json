@@ -4,9 +4,9 @@
     "name": "Virtual Simulation Labs",
     "category": "AI / ML",
     "image": "virtual-labs.svg",
-    "label": "Featured concept · EdTech AI",
-    "summary": "Turning a natural-language prompt into a guided, interactive STEM simulation.",
-    "detail": "A featured product concept for interactive STEM labs: a learner describes an experiment in natural language, the system maps the prompt to simulation parameters, and a guided interface presents live feedback. This concept card was added at the portfolio owner’s request; implementation details and project status should be confirmed before presenting it as shipped work.",
+    "label": "Ingen Labs · EdTech concept",
+    "summary": "An Ingen Labs concept turning a natural-language prompt into a guided, interactive STEM simulation.",
+    "detail": "An Ingen Labs product concept for interactive STEM labs: a learner describes an experiment in natural language, the system maps the prompt to simulation parameters, and a guided interface presents live feedback. This concept card was added at the portfolio owner’s request; implementation details and project status should be confirmed before presenting it as shipped work.",
     "tools": [
       "NLP",
       "Prompt-to-parameters",
