@@ -48,6 +48,39 @@ const projectCard = card => `<article class="project-tile" data-category="${card
 document.querySelector('#all-projects').innerHTML = `<div class="catalog-heading"><div><h2>My projects<span>.</span></h2></div><div class="shelf-controls"><button aria-label="Scroll projects left"><span>←</span></button><button aria-label="Scroll projects right"><span>→</span></button></div></div><div class="project-filters" role="group" aria-label="Filter projects"><button data-filter="All" aria-pressed="true">All</button><button data-filter="AI / ML" aria-pressed="false">AI / ML</button><button data-filter="Startups" aria-pressed="false">Startups</button><button data-filter="Products" aria-pressed="false">Products</button><button data-filter="Research" aria-pressed="false">Research</button><button data-filter="Automation" aria-pressed="false">Automation</button><button data-filter="Data" aria-pressed="false">Data</button><button data-filter="Full-stack" aria-pressed="false">Full-stack</button></div><div class="project-shelf" tabindex="0" aria-label="Project cards">${projectCards.map(projectCard).join('')}</div><p class="shelf-hint">Swipe through the cards—or use the arrows—to explore the work.</p>`;
 const shelf = document.querySelector('.project-shelf');
 const tiles = [...shelf.querySelectorAll('.project-tile')];
+let shelfDrag = null;
+let suppressShelfClick = false;
+const endShelfDrag = event => {
+  if (!shelfDrag || event.pointerId !== shelfDrag.pointerId) return;
+  const didDrag = shelfDrag.didDrag;
+  shelfDrag = null;
+  shelf.classList.remove('is-dragging');
+  if (shelf.hasPointerCapture(event.pointerId)) shelf.releasePointerCapture(event.pointerId);
+  if (didDrag) {
+    suppressShelfClick = true;
+    window.setTimeout(() => { suppressShelfClick = false; }, 0);
+  }
+};
+shelf.addEventListener('pointerdown', event => {
+  if (event.pointerType === 'mouse' && event.button !== 0) return;
+  shelfDrag = { pointerId: event.pointerId, startX: event.clientX, startLeft: shelf.scrollLeft, didDrag: false };
+  shelf.setPointerCapture(event.pointerId);
+});
+shelf.addEventListener('pointermove', event => {
+  if (!shelfDrag || event.pointerId !== shelfDrag.pointerId) return;
+  const distance = event.clientX - shelfDrag.startX;
+  if (Math.abs(distance) > 5) {
+    shelfDrag.didDrag = true;
+    shelf.classList.add('is-dragging');
+    shelf.scrollLeft = shelfDrag.startLeft - distance;
+  }
+});
+['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => shelf.addEventListener(type, endShelfDrag));
+shelf.addEventListener('click', event => {
+  if (!suppressShelfClick) return;
+  event.preventDefault();
+  event.stopPropagation();
+}, true);
 document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
   tiles.forEach(tile => tile.hidden = button.dataset.filter !== 'All' && tile.dataset.category !== button.dataset.filter);
