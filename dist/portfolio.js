@@ -170,6 +170,27 @@ researchGrid.insertAdjacentHTML('beforeend',`
 `);
 const researchHeading=document.querySelector('.p-research .p-heading');
 researchHeading.innerHTML=`<div class="research-heading-copy"><h2>Case Studies<br><em>&amp; Publications.</em></h2><p>Five explorations across speech AI, connected mobility, mathematical modelling, optimization and healthcare intelligence.</p></div><aside><strong>05</strong><span>Selected works</span><small>Open any card for the full story</small></aside>`;
+researchGrid.setAttribute('tabindex', '0');
+researchGrid.setAttribute('aria-label', 'Research case studies. Scroll horizontally to explore all cards.');
+
+const experienceHeading = document.querySelector('#experience .p-heading > div');
+if (experienceHeading) {
+  const experienceSummary = 'From research and product strategy to client delivery—creating work that moves ideas forward.';
+  experienceHeading.innerHTML = `<h2>Work.<br><em>Experience.</em></h2><p>${experienceSummary}</p>`;
+  if (!reducedMotion) window.setTimeout(() => {
+    experienceHeading.classList.add('is-swapping');
+    window.setTimeout(() => {
+      experienceHeading.innerHTML = `<h2>Built across disciplines.<br><em>Focused on impact.</em></h2><p>${experienceSummary}</p>`;
+      experienceHeading.classList.remove('is-swapping');
+    }, 240);
+  }, 2000);
+}
+
+const achievementsSection = document.querySelector('#achievements');
+const achievementsLinkedIn = achievementsSection?.querySelector('.text-link');
+if (achievementsLinkedIn) achievementsLinkedIn.href = 'https://www.linkedin.com/in/bhumikapoor/';
+const thinkLabAward = achievementsSection?.querySelectorAll('.awards-grid article')[4];
+if (thinkLabAward) thinkLabAward.querySelector('p').innerHTML = 'An EdTech idea brought to life with <a class="award-person" href="https://www.linkedin.com/in/prabhmannat/" target="_blank" rel="noreferrer">Prabhmannat Singh</a> and <span class="award-person">Arnav Hooda</span>.';
 researchGrid.querySelectorAll('.author').forEach(author=>author.remove());
 researchGrid.querySelectorAll('button').forEach(button=>button.insertAdjacentHTML('beforeend','<span class="research-cta">Explore case study <b>↗</b></span>'));
 async function openProject(button) {
