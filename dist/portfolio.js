@@ -54,6 +54,32 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
   shelf.scrollTo({left:0,behavior:'instant'});
 }));
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const projectTitle = document.querySelector('#all-projects .catalog-heading h2');
+if (projectTitle && !reducedMotion) {
+  const projectTitlePhrases = ['My projects', 'Selected work'];
+  let projectTitleIndex = 0;
+  let projectTitleLength = projectTitlePhrases[0].length;
+  let deletingProjectTitle = false;
+  const renderProjectTitle = () => {
+    const phrase = projectTitlePhrases[projectTitleIndex];
+    projectTitle.innerHTML = `${phrase.slice(0, projectTitleLength)}<span>.</span><b class="type-cursor" aria-hidden="true">|</b>`;
+  };
+  const typeProjectTitle = () => {
+    const phrase = projectTitlePhrases[projectTitleIndex];
+    renderProjectTitle();
+    if (!deletingProjectTitle && projectTitleLength === phrase.length) {
+      deletingProjectTitle = true;
+      window.setTimeout(typeProjectTitle, 1500);
+      return;
+    }
+    if (deletingProjectTitle && projectTitleLength === 0) {
+      deletingProjectTitle = false;
+      projectTitleIndex = (projectTitleIndex + 1) % projectTitlePhrases.length;
+    } else projectTitleLength += deletingProjectTitle ? -1 : 1;
+    window.setTimeout(typeProjectTitle, deletingProjectTitle ? 42 : 76);
+  };
+  window.setTimeout(typeProjectTitle, 1500);
+}
 document.querySelector('[aria-label="Scroll projects left"]').addEventListener('click',()=>shelf.scrollBy({left:-shelf.clientWidth*.85,behavior:reducedMotion?'instant':'smooth'}));
 document.querySelector('[aria-label="Scroll projects right"]').addEventListener('click',()=>shelf.scrollBy({left:shelf.clientWidth*.85,behavior:reducedMotion?'instant':'smooth'}));
 
