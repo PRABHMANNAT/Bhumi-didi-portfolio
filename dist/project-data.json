@@ -19,16 +19,17 @@
     "id": "drivesense",
     "name": "DriveSense",
     "category": "AI / ML",
-    "image": "mobility.jpg",
+    "image": "drivesense-iit-delhi.jpeg",
     "label": "Funded startup",
-    "summary": "Turning an ambitious mobility idea into an incubated venture.",
-    "detail": "DriveSense won first place at TECH FUTURE 4.0 and received a ₹6.5 lakh startup grant from IIT Delhi and Delhi Incubator. It is a startup initiative built around bringing an ambitious mobility idea from concept into an incubated venture.",
+    "summary": "A mobility startup initiative moving from competition concept toward an incubated venture.",
+    "detail": "DriveSense emerged from a multidisciplinary team working on a mobility challenge through IIT Delhi’s startup ecosystem. The initiative won first place at TECH FUTURE 4.0 and received a ₹6.5 lakh startup grant from IIT Delhi and Delhi Incubator. The work combined problem framing, mobility research, venture strategy and product development to take the idea from an early competition concept toward an incubated startup.",
     "tools": [
-      "Startup",
-      "Innovation",
-      "Mobility"
+      "Mobility research",
+      "Problem framing",
+      "Venture strategy",
+      "Product development"
     ],
-    "note": "Editorial mobility photograph by Hayden Sack / Unsplash; not a DriveSense prototype."
+    "note": "DriveSense team photo at the Indian Institute of Technology Delhi, supplied by the portfolio owner."
   },
   {
     "id": "ingenium",

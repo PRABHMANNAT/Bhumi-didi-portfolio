@@ -14,6 +14,8 @@ Reviewed on 12 September 2026.
 - `project-insights-dashboard.png` was supplied by the owner for the Project Insights Dashboard card.
 - `patient-intelligence.png` was supplied by the owner for the Patient Intelligence project card.
 - `virtual-simulation-labs.png` was supplied by the owner for the Virtual Simulation Labs project card.
+- `drivesense-iit-delhi.jpeg` was supplied by the owner for the DriveSense project card.
+- `ingen-workspace.png` was supplied by the owner for the Ingen Workspace project card.
 - `amritsar-golden-temple.png` and `chandigarh-university.png` were supplied by the owner for the pointer-following location cards in the About story.
 - `contact-award.png` and `contact-medals.png` were supplied by the owner for the contact-section photo.
 - `badrinath-temple.jpg` was supplied by the owner for the contact form’s image card.
