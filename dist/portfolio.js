@@ -202,6 +202,100 @@ const achievementsLinkedIn = achievementsSection?.querySelector('.text-link');
 if (achievementsLinkedIn) achievementsLinkedIn.href = 'https://www.linkedin.com/in/bhumikapoor/';
 const thinkLabAward = achievementsSection?.querySelectorAll('.awards-grid article')[4];
 if (thinkLabAward) thinkLabAward.querySelector('p').innerHTML = 'An EdTech idea brought to life with <a class="award-person" href="https://www.linkedin.com/in/prabhmannat/" target="_blank" rel="noreferrer">Prabhmannat Singh</a> and <span class="award-person">Arnav Hooda</span>.';
+
+const achievementTooltipItems = [
+  { image: 'exemplary-achiever-award.jpeg', label: 'Exemplary Achiever award' },
+  { image: 'academic-achiever-2025-award.jpeg', label: 'Academic Achiever 2025 award' },
+  { image: 'tech-future-4.png', label: 'TECH FUTURE 4.0 first-place team' },
+  { image: 'robofest-finalist.jpeg', label: 'ROBOFEST 4.0 finalist' },
+  { image: 'thinklab-ideathon.jpeg', label: 'ThinkLab Ideathon first-place trophy' },
+  { image: 'two-gold-medals.png', label: 'Two gold medals' },
+  { image: 'extempore-award.png', label: 'Extempore Award' },
+  { image: 'best-paper-presentation-award.jpeg', label: 'Best Paper Presentation award' }
+];
+const achievementCards = [...achievementsSection.querySelectorAll('.awards-grid article')];
+const achievementTooltip = document.createElement('div');
+achievementTooltip.className = 'achievement-image-tooltip';
+achievementTooltip.id = 'achievement-image-tooltip';
+achievementTooltip.setAttribute('role', 'tooltip');
+achievementTooltip.innerHTML = '<img alt=""><span></span>';
+document.body.append(achievementTooltip);
+const achievementTooltipImage = achievementTooltip.querySelector('img');
+const achievementTooltipLabel = achievementTooltip.querySelector('span');
+const usesCoarsePointer = () => matchMedia('(hover: none), (pointer: coarse)').matches;
+let activeAchievementCard;
+let achievementHoldTimer;
+let suppressAchievementTap = false;
+function positionAchievementTooltip(card) {
+  if (usesCoarsePointer()) {
+    achievementTooltip.classList.add('is-mobile');
+    achievementTooltip.style.left = '';
+    achievementTooltip.style.top = '';
+    return;
+  }
+  achievementTooltip.classList.remove('is-mobile');
+  const cardBounds = card.getBoundingClientRect();
+  const tooltipWidth = achievementTooltip.offsetWidth || 280;
+  const left = Math.max(16, Math.min(cardBounds.right + 14, window.innerWidth - tooltipWidth - 16));
+  const top = Math.max(16, Math.min(cardBounds.top, window.innerHeight - achievementTooltip.offsetHeight - 16));
+  achievementTooltip.style.left = `${left}px`;
+  achievementTooltip.style.top = `${top}px`;
+}
+function showAchievementTooltip(card, index) {
+  const item = achievementTooltipItems[index];
+  if (!item) return;
+  activeAchievementCard?.setAttribute('aria-expanded', 'false');
+  activeAchievementCard = card;
+  achievementTooltipImage.src = `assets/${item.image}`;
+  achievementTooltipImage.alt = item.label;
+  achievementTooltipLabel.textContent = item.label;
+  card.setAttribute('aria-expanded', 'true');
+  achievementTooltip.classList.add('is-visible');
+  positionAchievementTooltip(card);
+}
+function hideAchievementTooltip() {
+  if (!activeAchievementCard) return;
+  activeAchievementCard.setAttribute('aria-expanded', 'false');
+  activeAchievementCard = null;
+  achievementTooltip.classList.remove('is-visible', 'is-mobile');
+}
+achievementCards.forEach((card, index) => {
+  card.dataset.achievementTooltip = String(index);
+  card.tabIndex = 0;
+  card.setAttribute('aria-describedby', 'achievement-image-tooltip');
+  card.setAttribute('aria-expanded', 'false');
+  card.addEventListener('pointerenter', () => { if (!usesCoarsePointer()) showAchievementTooltip(card, index); });
+  card.addEventListener('pointerleave', () => { if (!usesCoarsePointer()) hideAchievementTooltip(); });
+  card.addEventListener('focusin', () => showAchievementTooltip(card, index));
+  card.addEventListener('focusout', () => { if (!usesCoarsePointer()) hideAchievementTooltip(); });
+  card.addEventListener('click', event => {
+    if (event.target.closest('a')) return;
+    if (suppressAchievementTap) {
+      suppressAchievementTap = false;
+      event.preventDefault();
+      return;
+    }
+    if (usesCoarsePointer()) activeAchievementCard === card ? hideAchievementTooltip() : showAchievementTooltip(card, index);
+  });
+  card.addEventListener('pointerdown', event => {
+    if (!usesCoarsePointer()) return;
+    window.clearTimeout(achievementHoldTimer);
+    achievementHoldTimer = window.setTimeout(() => {
+      suppressAchievementTap = true;
+      showAchievementTooltip(card, index);
+    }, 500);
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(type => card.addEventListener(type, () => window.clearTimeout(achievementHoldTimer)));
+  card.addEventListener('keydown', event => {
+    if (!['Enter', ' '].includes(event.key)) return;
+    event.preventDefault();
+    activeAchievementCard === card ? hideAchievementTooltip() : showAchievementTooltip(card, index);
+  });
+});
+document.addEventListener('pointerdown', event => {
+  if (!usesCoarsePointer() || event.target.closest('.awards-grid article')) return;
+  hideAchievementTooltip();
+});
 researchGrid.querySelectorAll('.author').forEach(author=>author.remove());
 researchGrid.querySelectorAll('button').forEach(button=>button.insertAdjacentHTML('afterend','<a class="research-cta" href="https://www.linkedin.com/in/bhumikapoor/recent-activity/all/" target="_blank" rel="noreferrer">View on LinkedIn <b>↗</b></a>'));
 researchGrid.querySelectorAll('button').forEach(button=>{
