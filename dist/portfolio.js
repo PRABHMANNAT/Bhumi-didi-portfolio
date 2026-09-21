@@ -203,7 +203,7 @@ if (achievementsLinkedIn) achievementsLinkedIn.href = 'https://www.linkedin.com/
 const thinkLabAward = achievementsSection?.querySelectorAll('.awards-grid article')[4];
 if (thinkLabAward) thinkLabAward.querySelector('p').innerHTML = 'An EdTech idea brought to life with <a class="award-person" href="https://www.linkedin.com/in/prabhmannat/" target="_blank" rel="noreferrer">Prabhmannat Singh</a> and <span class="award-person">Arnav Hooda</span>.';
 researchGrid.querySelectorAll('.author').forEach(author=>author.remove());
-researchGrid.querySelectorAll('button').forEach(button=>button.insertAdjacentHTML('beforeend','<span class="research-cta">Explore case study <b>↗</b></span>'));
+researchGrid.querySelectorAll('button').forEach(button=>button.insertAdjacentHTML('afterend','<a class="research-cta" href="https://www.linkedin.com/in/bhumikapoor/recent-activity/all/" target="_blank" rel="noreferrer">View on LinkedIn <b>↗</b></a>'));
 async function openProject(button) {
   dialogTrigger = button;
   try {
