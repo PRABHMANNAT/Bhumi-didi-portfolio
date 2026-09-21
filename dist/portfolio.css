@@ -1,5 +1,5 @@
 /* Portfolio extension. Hero and skills retain their original stylesheet. */
-html,body{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}.p-research .research-grid{scrollbar-width:none;-ms-overflow-style:none}.p-research .research-grid::-webkit-scrollbar{display:none}
+html,body{scrollbar-width:none!important;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}.p-research .research-grid{overflow-y:hidden!important;scrollbar-width:none!important;-ms-overflow-style:none}.p-research .research-grid::-webkit-scrollbar{display:none!important}
 .collaboration-strip{display:flex;align-items:center;gap:30px;margin-top:25px;padding:25px;border:1px solid #ffffff23}.collaboration-strip img{width:110px;height:100px;object-fit:cover;border-radius:14px}.collaboration-strip p{font-size:25px;line-height:1.2}.collaboration-strip em{font-family:Georgia,serif;color:#c1b3ec}.collaboration-strip a{margin-left:auto}
 @media(max-width:760px){.collaboration-strip{flex-wrap:wrap;gap:20px}.collaboration-strip p{font-size:22px}.collaboration-strip a{margin-left:0;font-size:12px}}
 :root{--lavender:#c1b3ec;--ink:#121313;--paper:#efefeb;--muted:#a3aaa7;--line:#ffffff23}
