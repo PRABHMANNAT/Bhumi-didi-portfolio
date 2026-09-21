@@ -168,6 +168,17 @@ researchGrid.insertAdjacentHTML('beforeend',`
   <article><button data-project="gnn-aco-routing"><img src="assets/gnn-aco-route-optimization.png" alt="Route-optimization visualization showing depot-to-customer paths" loading="lazy" decoding="async"><small>Research project</small><h3>GNN–ACO Hybrid for Multi-Depot Vehicle Route Optimization</h3><p>Combining graph learning and swarm intelligence for complex route planning.</p></button></article>
   <article><button data-project="disease-risk-prediction"><img src="assets/medical-disease-risk-prediction.png" alt="Medical disease-risk prediction dashboard showing diabetes and heart-disease insights" loading="lazy" decoding="async"><small>Machine learning project</small><h3>Medical Disease Risk Prediction</h3><p>Exploring predictive models for diabetes and heart-disease risk.</p></button></article>
 `);
+const researchDetails={
+  speech:'As a Samsung PRISM intern and team lead, Bhumi contributed to three worklets across Hindi, Urdu and Punjabi, preparing data, coordinating experiments and evaluating models for more dependable spoken-language identification.',
+  tele:'This award-winning study explores a real-time Tele-Automobile System using wireless sensor networks and MATLAB, examining how connected systems and simulation can support practical engineering decisions.',
+  epi:'This publication explores mathematical modelling in epidemiology, using analytical models to study changing populations and connect technical reasoning to real-world public-health questions.',
+  'gnn-aco-routing':'This research combines graph neural networks with ant-colony optimisation to explore more adaptive planning for complex, multi-depot vehicle-routing problems.',
+  'disease-risk-prediction':'This machine-learning project explores diabetes and heart-disease risk indicators through structured data preparation, predictive modelling, evaluation metrics and a responsible dashboard view.'
+};
+researchGrid.querySelectorAll('button').forEach(button=>{
+  const description=researchDetails[button.dataset.project];
+  if(description) button.querySelector('p').textContent=description;
+});
 const researchHeading=document.querySelector('.p-research .p-heading');
 researchHeading.innerHTML=`<div class="research-heading-copy"><h2>Case Studies<br><em>&amp; Publications.</em></h2><p>Five explorations across speech AI, connected mobility, mathematical modelling, optimization and healthcare intelligence.</p></div><aside><strong>05</strong><span>Selected works</span><small>Open any card for the full story</small></aside>`;
 researchGrid.setAttribute('tabindex', '0');
