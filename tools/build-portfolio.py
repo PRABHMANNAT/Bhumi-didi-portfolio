@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, html
+import json, html, re
 
 root=Path(__file__).resolve().parents[1]
 page=root/'dist/index.html'
@@ -22,7 +22,9 @@ about=f'''
    <div class="photo-back back-one"></div><div class="photo-back back-two"></div>
    <figure class="deck-slide active">{img('bhumi-portrait.png','Bhumi Kapoor in a black blazer')}<figcaption>Curious by nature. A builder by choice.</figcaption></figure>
    <figure class="deck-slide">{img('ingenium-team.jpg','Bhumi and her teammate with the ThinkLab Ideathon trophy')}<figcaption>Ideas become better when we build together.</figcaption></figure>
-   <div class="deck-controls"><button aria-label="Previous photo">←</button><span id="photo-count" aria-live="polite">01 / 02</span><button aria-label="Next photo">→</button></div>
+   <figure class="deck-slide">{img('about-awards-winner.jpeg','Bhumi Kapoor holding research competition certificates and medals')}<figcaption>Learning, growing, showing up.</figcaption></figure>
+   <figure class="deck-slide">{img('about-ieee-event.jpeg','Bhumi Kapoor with a fellow attendee at an IEEE event')}<figcaption>Better work is built together.</figcaption></figure>
+   <div class="deck-controls"><button aria-label="Previous photo">←</button><span id="photo-count" aria-live="polite">01 / 04</span><button aria-label="Next photo">→</button></div>
  </div>
  <div class="about-aside"><a class="mini-feature" href="#achievements">{img('extempore.jpg','Bhumi receiving the Extempore Award')}<div><small>A moment to remember</small><strong>Finding my voice.<br>Making an impact.</strong></div><span>↗</span></a><div class="about-note"><p>I’m Bhumi Kapoor — a technology enthusiast, researcher, builder, problem-solver, communicator, and now, a founder.</p><a class="round-link" href="#contact">Let’s build something <b>↗</b></a></div></div>
  <svg class="about-wave" viewBox="0 0 1500 280" aria-hidden="true"><path id="about-wave-path" d="M-50 150 C270 440 650 15 880 120 S1240 -50 1580 130"/><text><textPath href="#about-wave-path">AI RESEARCH · AUTOMATION · DIGITAL PRODUCTS · FOUNDER · PROBLEM SOLVING · AI RESEARCH · AUTOMATION · DIGITAL PRODUCTS ·</textPath></text></svg>
@@ -111,7 +113,7 @@ contact=contact.replace('''<div class="contact-illustration" aria-hidden="true">
 contact=contact.replace('''<label>What can we build together?<select name="interest"><option>AI & automation</option><option>Research collaboration</option><option>Websites & digital products</option><option>Internship / hiring opportunity</option><option>Something else</option></select></label>''','')
 contact=contact.replace('''<button class="send-button" type="submit">Create email draft <span>↗</span></button>''','''<button class="send-button" type="submit">Send message <span>↗</span></button>''')
 contact=contact.replace('''Opens your email app with a prepared message.''','''Messages are sent securely to Bhumi.''')
-contact=contact.replace('''<div class="spotify-shell"><div><small>Currently on repeat</small><strong>A track for the build</strong><a href="https://open.spotify.com/track/3hB9lDLyAClYVZivMMl20N" target="_blank" rel="noreferrer">Open in Spotify ↗</a></div><iframe''','''<div class="spotify-shell"><iframe''')
+contact=re.sub(r'<div class="spotify-shell">.*?</div>(?=<div class="footer-photos">)', '''<a class="spotify-card" href="https://open.spotify.com/track/3hB9lDLyAClYVZivMMl20N" target="_blank" rel="noreferrer" aria-label="Listen to Bhumi’s featured track on Spotify"><span class="spotify-mark" aria-hidden="true">●</span><span><small>Featured track</small><strong>Listen on Spotify</strong></span><b aria-hidden="true">↗</b></a>''', contact, flags=re.S)
 page.write_text(prefix+about+experience+featured+catalog+achievements+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
 (root/'dist/project-data.json').write_text(json.dumps(projects,ensure_ascii=False,indent=2),encoding='utf-8')
 script=(root/'dist/script.js').read_text(encoding='utf-8').split('const ugcSlides')[0]

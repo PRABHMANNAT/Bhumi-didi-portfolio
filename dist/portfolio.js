@@ -599,3 +599,37 @@ if(storyPlaces.length&&locationTooltip){
     place.addEventListener('blur',hideTooltip);
   });
 }
+
+function typewriteElement(element, delay) {
+  const nodes=[...element.childNodes].map(node=>node.cloneNode(true));
+  let nodeIndex=0;
+  element.textContent='';
+  element.classList.add('is-typewriting');
+  const typeNextNode=()=>{
+    const node=nodes[nodeIndex++];
+    if(!node){element.classList.remove('is-typewriting');return;}
+    if(node.nodeName==='BR'){element.append(document.createElement('br'));typeNextNode();return;}
+    const target=node.nodeType===Node.TEXT_NODE?element:node.cloneNode(false);
+    if(target!==element) element.append(target);
+    const text=node.textContent;
+    let characterIndex=0;
+    const typeCharacter=()=>{
+      target.append(text[characterIndex++]);
+      if(characterIndex<text.length) window.setTimeout(typeCharacter,delay);
+      else typeNextNode();
+    };
+    typeCharacter();
+  };
+  typeNextNode();
+}
+function revealWithTypewriter(element, delay) {
+  if(!element||reducedMotion) return;
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    typewriteElement(element,delay);
+    observer.unobserve(element);
+  }),{threshold:.5});
+  observer.observe(element);
+}
+revealWithTypewriter(document.querySelector('#testimonials .p-heading h2'),42);
+revealWithTypewriter(document.querySelector('#contact .hire-copy>p:not(.p-kicker)'),16);
