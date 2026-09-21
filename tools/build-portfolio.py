@@ -8,7 +8,7 @@ prefix=original.split('<section class="p-about')[0] if '<section class="p-about'
 prefix=prefix.replace('<link rel="stylesheet" href="ugc.css">','<link rel="stylesheet" href="portfolio.css">')
 prefix=prefix.replace('content="Bhumi Kapoor — Data Science Engineer and CSE (AIML) undergraduate at Chandigarh University. Data science, machine learning, research and analytics."','content="Bhumi Kapoor — AI researcher, builder and founder. Explore Samsung PRISM research, technology projects, awards and work across AI, automation and business."')
 LI='https://www.linkedin.com/in/bhumikapoor/'
-MAIL='Bhumikapoor2005@gmail.com'
+MAIL='bhumiikapoorr@gmail.com'
 def img(src,alt,cls=''):
     return f'<img class="{cls}" src="assets/{src}" alt="{html.escape(alt)}" loading="lazy" decoding="async">'
 def tag(s): return f'<span>{html.escape(s)}</span>'
@@ -111,6 +111,7 @@ contact=contact.replace('''<img class="" src="assets/industry.jpg" alt="Bhumi wi
 contact=contact.replace('''<div class="contact-illustration" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="laptop"><span></span></div></div>''','''<figure class="contact-visual" aria-label="Badrinath Temple photo gallery"><img class="is-active" src="assets/badrinath-temple.jpg" alt="Badrinath Temple beside the Alaknanda River and Himalayan mountains" loading="lazy" decoding="async"><img src="assets/badrinath-temple-himalayas.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></figure>''')
 contact=contact.replace('''<label>What can we build together?<select name="interest"><option>AI & automation</option><option>Research collaboration</option><option>Websites & digital products</option><option>Internship / hiring opportunity</option><option>Something else</option></select></label>''','')
 contact=contact.replace('''<button class="send-button" type="submit">Create email draft <span>↗</span></button>''','''<button class="send-button" type="submit">Send message <span>↗</span></button>''')
+contact=contact.replace('''Opens your email app with a prepared message.''','''Messages are sent securely to Bhumi.''')
 contact=contact.replace('''<div class="spotify-shell"><div><small>Currently on repeat</small><strong>A track for the build</strong><a href="https://open.spotify.com/track/3hB9lDLyAClYVZivMMl20N" target="_blank" rel="noreferrer">Open in Spotify ↗</a></div><iframe''','''<div class="spotify-shell"><iframe''')
 page.write_text(prefix+about+experience+featured+catalog+achievements+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
 (root/'dist/project-data.json').write_text(json.dumps(projects,ensure_ascii=False,indent=2),encoding='utf-8')

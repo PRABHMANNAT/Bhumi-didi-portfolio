@@ -67,7 +67,7 @@ html,body{scrollbar-width:none!important;-ms-overflow-style:none}html::-webkit-s
 .p-contact-wrap #contact-form input,.p-contact-wrap #contact-form textarea{color:#171612;background:#fffdf8;border-color:#bbb1a1;box-shadow:inset 0 1px 0 #fff}
 .p-contact-wrap #contact-form input::placeholder,.p-contact-wrap #contact-form textarea::placeholder{color:#847b6d}
 .p-contact-wrap #contact-form input:focus,.p-contact-wrap #contact-form textarea:focus{border-color:#171612;background:#fff;box-shadow:0 0 0 3px #1b1a1617;transform:translateY(-1px)}
-.p-contact-wrap .send-button{color:#fff;background:#171612;box-shadow:0 11px 22px #16140f30}.p-contact-wrap .send-button:hover{box-shadow:0 15px 30px #16140f42}.p-contact-wrap .send-button:active{transform:translateY(1px) scale(.98)}.p-contact-wrap .send-button.is-sending{animation:send-message-pop .62s cubic-bezier(.2,.9,.25,1)}
+.p-contact-wrap .send-button{color:#fff;background:#171612;box-shadow:0 11px 22px #16140f30}.p-contact-wrap .send-button:hover{box-shadow:0 15px 30px #16140f42}.p-contact-wrap .send-button:active{transform:translateY(1px) scale(.98)}.p-contact-wrap .send-button:disabled{cursor:wait;opacity:.7}.p-contact-wrap .send-button.is-sending{animation:send-message-pop .62s cubic-bezier(.2,.9,.25,1)}
 @keyframes send-message-pop{0%{transform:scale(1)}35%{transform:scale(.93) rotate(-.8deg)}72%{transform:scale(1.04) rotate(.55deg)}100%{transform:scale(1) rotate(0)}}
 
 /* Floating navigation shared by the hero and every section below it. */

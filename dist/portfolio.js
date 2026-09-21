@@ -218,9 +218,9 @@ async function openProject(button) {
     if (!p) return;
     const story=(Array.isArray(p.story)&&p.story.length?p.story:[p.detail]).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('');
     const supporting=p.supportImage?`<figure class="dialog-support"><img src="assets/${escapeHTML(p.supportImage)}" alt="${escapeHTML(p.supportAlt)}"><figcaption>${escapeHTML(p.supportCredit)} · <a href="${escapeHTML(p.supportSource)}" target="_blank" rel="noreferrer">View source ↗</a></figcaption></figure>`:'';
-    document.querySelector('#dialog-content').innerHTML = `<header class="dialog-hero"><img class="dialog-image" src="assets/${escapeHTML(p.image)}" alt="${escapeHTML(p.note)}"><div><small>${escapeHTML(p.label)}</small><h2 id="dialog-title">${escapeHTML(p.name)}</h2></div></header><div class="dialog-body"><p class="dialog-summary">${escapeHTML(p.summary)}</p><div class="dialog-story">${story}</div>${supporting}<div class="dialog-footer"><div class="p-tags">${p.tools.map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div><a class="small-pill" href="mailto:Bhumikapoor2005@gmail.com?subject=${encodeURIComponent('Tell me more about '+p.name)}">Ask about this work ↗</a></div></div>`;
+    document.querySelector('#dialog-content').innerHTML = `<header class="dialog-hero"><img class="dialog-image" src="assets/${escapeHTML(p.image)}" alt="${escapeHTML(p.note)}"><div><small>${escapeHTML(p.label)}</small><h2 id="dialog-title">${escapeHTML(p.name)}</h2></div></header><div class="dialog-body"><p class="dialog-summary">${escapeHTML(p.summary)}</p><div class="dialog-story">${story}</div>${supporting}<div class="dialog-footer"><div class="p-tags">${p.tools.map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div><a class="small-pill" href="mailto:bhumiikapoorr@gmail.com?subject=${encodeURIComponent('Tell me more about '+p.name)}">Ask about this work ↗</a></div></div>`;
   } catch {
-    document.querySelector('#dialog-content').innerHTML = '<div class="dialog-body"><h2 id="dialog-title">Project details unavailable</h2><p>Please try again or email Bhumi for more information.</p><a href="mailto:Bhumikapoor2005@gmail.com">Email Bhumi ↗</a></div>';
+    document.querySelector('#dialog-content').innerHTML = '<div class="dialog-body"><h2 id="dialog-title">Project details unavailable</h2><p>Please try again or email Bhumi for more information.</p><a href="mailto:bhumiikapoorr@gmail.com">Email Bhumi ↗</a></div>';
   }
   dialog.showModal(); document.body.style.overflow='hidden';
 }
@@ -293,17 +293,30 @@ if (achievementIntro && !reducedMotion) {
   } else typeAchievementIntro();
 }
 
-document.querySelector('#contact-form').addEventListener('submit',e=>{
+document.querySelector('#contact-form').addEventListener('submit',async e=>{
   e.preventDefault();
   const sendButton=e.currentTarget.querySelector('.send-button');
+  if(sendButton.disabled) return;
   sendButton.classList.remove('is-sending');
   void sendButton.offsetWidth;
   sendButton.classList.add('is-sending');
   const values=new FormData(e.currentTarget);
-  const subject=`Portfolio inquiry — ${values.get('name')}`;
-  const body=`Hi Bhumi,\n\n${values.get('message')}\n\n${values.get('name')}\n${values.get('email')}`;
-  window.location.href=`mailto:Bhumikapoor2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.querySelector('#form-status').textContent='Your message is ready in your email app. Review it and press Send there. If no app opened, use the email link beside this form.';
+  const status=document.querySelector('#form-status');
+  const payload={name:String(values.get('name')||'').trim(),email:String(values.get('email')||'').trim(),message:String(values.get('message')||'').trim()};
+  sendButton.disabled=true;
+  status.textContent='Sending your message…';
+  try {
+    const result=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const body=await result.json().catch(()=>({}));
+    if(!result.ok) throw new Error(body.error||'Unable to send your message right now.');
+    e.currentTarget.reset();
+    status.textContent='Thanks — your message has been sent to Bhumi.';
+  } catch(error) {
+    status.textContent=error.message||'Unable to send your message right now. Please email Bhumi directly.';
+  } finally {
+    sendButton.disabled=false;
+    sendButton.classList.remove('is-sending');
+  }
 });
 const contactFrames=[...document.querySelectorAll('.contact-visual img')];
 if(contactFrames.length>1&&!reducedMotion){

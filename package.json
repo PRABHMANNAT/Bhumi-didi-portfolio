@@ -7,5 +7,8 @@
     "dev": "node serve.cjs",
     "start": "node serve.cjs",
     "check": "node --check dist/script.js && node --check dist/portfolio.js"
+  },
+  "dependencies": {
+    "resend": "^6.28.1"
   }
 }
