@@ -5,7 +5,7 @@ let photoIndex = 0;
 function showPhoto(index) {
   photoIndex = (index + photos.length) % photos.length;
   photos.forEach((photo, i) => { photo.classList.toggle('active', i === photoIndex); photo.setAttribute('aria-hidden', String(i !== photoIndex)); });
-  document.querySelector('#photo-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / 03`;
+  document.querySelector('#photo-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
 }
 deck.querySelector('[aria-label="Previous photo"]').addEventListener('click', () => showPhoto(photoIndex - 1));
 deck.querySelector('[aria-label="Next photo"]').addEventListener('click', () => showPhoto(photoIndex + 1));
@@ -34,9 +34,9 @@ const projectCards = [
   { category: 'AI / ML', image: 'ai-copilot.png', alt: 'AI Copilot workflow interface for creating automated steps', title: 'Insight Copilot', description: 'A concept for an AI assistant that turns scattered feedback into searchable themes, priority signals and concise next steps. It is designed around human review—helping teams identify patterns without treating automation as a replacement for judgement.', skills: 'Text analysis · Prompt design · Insight synthesis · Human-in-the-loop UX' },
   { category: 'Products', image: 'student-opportunity-hub.png', alt: 'Student Opportunity Hub dashboard showing a timetable, assignments, grades and quick notes', title: 'Student Opportunity Hub', description: 'A product concept that brings campus events, opportunities, clubs and resources into one personalised starting point. The experience is structured to help students discover what matters, save it for later and move from interest to participation with less friction.', skills: 'Product strategy · User journeys · Information architecture · Interaction design' },
   { category: 'Products', image: 'client-delivery-portal.png', alt: 'Client Delivery Portal dashboard with client metrics, project data and an AI assistant', title: 'Client Delivery Portal', description: 'A client-facing product concept for turning a project brief into a transparent delivery journey. It brings goals, milestones, feedback and approvals into one shared workspace so every stakeholder can see what is happening and what needs attention next.', skills: 'Service design · Workflow mapping · Stakeholder UX · Product requirements' },
-  { category: 'Research', project: 'tele', image: 'tele-automobile-system.jpg', alt: 'Connected vehicle communication illustration', title: 'Tele-Automobile System', description: 'Award-winning research exploring a real-time Tele-Automobile System using wireless sensor networks and MATLAB. It examines how connected systems and simulation can answer practical engineering questions.' },
-  { category: 'Research', project: 'epi', image: 'epidemiology-modelling.png', alt: 'Mathematical modelling in epidemiology', title: 'Mathematical Modelling in Epidemiology', description: 'A research exploration using mathematical models to study how systems change over time. It connects analytical reasoning with a human-centred view of public-health questions.' },
-  { category: 'Research', project: 'gnn-aco-routing', image: 'gnn-aco-route-optimization.png', alt: 'Route optimisation visualization', title: 'GNN–ACO Route Optimisation', description: 'A research project combining graph learning and ant-colony optimisation for complex multi-depot routing. The work explores more adaptive approaches to planning and operational decision-making.' },
+  { category: 'Research', project: 'tele', image: 'tele-automobile-system.jpg', alt: 'Connected vehicle communication illustration', title: 'Tele-Automobile System', description: 'This award-winning research studies a real-time Tele-Automobile System using Wireless Sensor Networks and MATLAB. It explores how connected sensors, communication and simulation can support practical engineering decisions; the work received first place in a research-paper competition.' },
+  { category: 'Research', project: 'epi', image: 'epidemiology-modelling.png', alt: 'Mathematical modelling in epidemiology', title: 'Mathematical Modelling in Epidemiology', description: 'This research explores mathematical modelling in epidemiology, using analytical models to examine how populations and health-related systems change over time. It connects technical reasoning with real-world public-health questions and highlights the role of clear interpretation in research.' },
+  { category: 'Research', project: 'gnn-aco-routing', image: 'gnn-aco-route-optimization.png', alt: 'Route optimisation visualization', title: 'GNN–ACO Route Optimisation', description: 'This research explores a hybrid Graph Neural Network and Ant Colony Optimisation approach for multi-depot vehicle routing. It combines learned graph representations with search-based optimisation to investigate more adaptive routing decisions across multiple depots.' },
   { category: 'Automation', project: 'automation', image: 'operations-automation.png', alt: 'Operations automation interface showing compliance records, key dates and connected workflow cards', title: 'Operations Automation Studio', description: 'A practical automation initiative for mapping repetitive business work and turning it into connected, dependable flows. The interface brings compliance activity, key dates, records and validation steps into one operational view so teams can move from scattered follow-ups to visible progress.', skills: 'Process mapping · Automation design · Requirements analysis · Workflow optimisation' },
   { category: 'Automation', image: 'workflow-automation.png', title: 'Workflow Autopilot', description: 'A workflow-builder concept for connecting prompts, tools, app requests and structured outputs in one visual sequence. The canvas makes branching logic easier to inspect, test and improve while giving teams a clearer path from an idea to a repeatable automation.', skills: 'Systems thinking · Workflow design · API orchestration · Operational analytics' },
   { category: 'Data', image: 'project-insights-dashboard.png', alt: 'Project Insights Dashboard interface showing productivity, project progress, task status and calendar data', title: 'Project Insights Dashboard', description: 'A data-product dashboard concept that translates everyday project activity into a clear operational picture. It brings productivity trends, delivery progress, task status and calendar context together so teams can spot priorities, track momentum and make informed decisions at a glance.', skills: 'Dashboard design · KPI visualisation · Data storytelling · Information hierarchy' },
@@ -210,6 +210,40 @@ researchGrid.querySelectorAll('button').forEach(button=>{
   card.innerHTML=button.innerHTML;
   button.replaceWith(card);
 });
+let researchDrag;
+let suppressResearchClick=false;
+const endResearchDrag=event=>{
+  if(!researchDrag||event.pointerId!==researchDrag.pointerId) return;
+  const didDrag=researchDrag.didDrag;
+  researchDrag=null;
+  researchGrid.classList.remove('is-dragging');
+  if(researchGrid.hasPointerCapture(event.pointerId)) researchGrid.releasePointerCapture(event.pointerId);
+  if(didDrag){
+    suppressResearchClick=true;
+    window.setTimeout(()=>{suppressResearchClick=false;},0);
+  }
+};
+researchGrid.addEventListener('pointerdown',event=>{
+  if(event.pointerType==='mouse'&&event.button!==0) return;
+  researchDrag={pointerId:event.pointerId,startX:event.clientX,startLeft:researchGrid.scrollLeft,didDrag:false};
+  researchGrid.setPointerCapture(event.pointerId);
+});
+researchGrid.addEventListener('pointermove',event=>{
+  if(!researchDrag||event.pointerId!==researchDrag.pointerId) return;
+  const distance=event.clientX-researchDrag.startX;
+  if(Math.abs(distance)>5){
+    researchDrag.didDrag=true;
+    researchGrid.classList.add('is-dragging');
+    researchGrid.scrollLeft=researchDrag.startLeft-distance;
+    event.preventDefault();
+  }
+});
+['pointerup','pointercancel','lostpointercapture'].forEach(type=>researchGrid.addEventListener(type,endResearchDrag));
+researchGrid.addEventListener('click',event=>{
+  if(!suppressResearchClick) return;
+  event.preventDefault();
+  event.stopPropagation();
+},true);
 async function openProject(button) {
   dialogTrigger = button;
   try {
