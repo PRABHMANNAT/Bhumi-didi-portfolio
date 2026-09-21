@@ -204,6 +204,12 @@ const thinkLabAward = achievementsSection?.querySelectorAll('.awards-grid articl
 if (thinkLabAward) thinkLabAward.querySelector('p').innerHTML = 'An EdTech idea brought to life with <a class="award-person" href="https://www.linkedin.com/in/prabhmannat/" target="_blank" rel="noreferrer">Prabhmannat Singh</a> and <span class="award-person">Arnav Hooda</span>.';
 researchGrid.querySelectorAll('.author').forEach(author=>author.remove());
 researchGrid.querySelectorAll('button').forEach(button=>button.insertAdjacentHTML('afterend','<a class="research-cta" href="https://www.linkedin.com/in/bhumikapoor/recent-activity/all/" target="_blank" rel="noreferrer">View on LinkedIn <b>↗</b></a>'));
+researchGrid.querySelectorAll('button').forEach(button=>{
+  const card=document.createElement('div');
+  card.className='research-card';
+  card.innerHTML=button.innerHTML;
+  button.replaceWith(card);
+});
 async function openProject(button) {
   dialogTrigger = button;
   try {
