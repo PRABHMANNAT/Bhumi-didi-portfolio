@@ -472,6 +472,29 @@ document.querySelectorAll('.skill-icon').forEach(icon=>{
   const match=Object.keys(skillIconSources).find(slug=>icon.src.includes(`/${slug}/`));
   if(match) icon.src=skillIconSources[match];
 });
+const skillsMarquee=document.querySelector('.skills-marquee');
+if(skillsMarquee){
+  const skills=[...skillsMarquee.querySelector('.skills-list').children];
+  const skillsMobileRows=document.createElement('div');
+  skillsMobileRows.className='skills-mobile-rows';
+  [skills.slice(0,Math.ceil(skills.length/2)),skills.slice(Math.ceil(skills.length/2))].forEach((group,index)=>{
+    const row=document.createElement('div');
+    row.className='skills-mobile-row';
+    row.setAttribute('aria-label',index===0?'Core data and AI skills':'Tools, platforms and workflow skills');
+    const track=document.createElement('div');
+    track.className='skills-mobile-track';
+    [false,true].forEach(hidden=>{
+      const list=document.createElement('div');
+      list.className='skills-list';
+      if(hidden) list.setAttribute('aria-hidden','true');
+      group.forEach(skill=>list.append(skill.cloneNode(true)));
+      track.append(list);
+    });
+    row.append(track);
+    skillsMobileRows.append(row);
+  });
+  skillsMarquee.append(skillsMobileRows);
+}
 const skillsHeadline=document.querySelector('#about>h2');
 const skillsHeadlines=['I turn data into<br>real world impact','My tech stack.<br>My skills.'];
 if(skillsHeadline&&!reducedMotion){
