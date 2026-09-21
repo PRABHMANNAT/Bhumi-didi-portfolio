@@ -76,12 +76,6 @@ for num,title,sub,desc in awards:
     achievements+=f'<article><small>{num}</small><div><h3>{title}</h3><span>{sub}</span><p>{desc}</p></div></article>'
 achievements+=f'</div><a class="text-link" href="{LI}recent-activity/all/" target="_blank" rel="noreferrer">More moments on LinkedIn ↗</a></section>'
 
-certs=[('AI','Artificial Intelligence Analyst','Chandigarh University · April 2026','https://courses.cu.skillsnetwork.site/certificates/0d5ad49e215c4ab4921537ca9a7f7b9b'),('M','Introduction to Programming with MATLAB','Vanderbilt University · April 2026','https://www.coursera.org/account/accomplishments/verify/P9ZEO2KBMLEW'),('S','Samsung PRISM Program','Certificate of participation · 2025–2026','assets/samsung.jpg'),('▦','Discover data analysis','Microsoft Learn · Learning badge',LI+'recent-activity/all/')]
-certifications='<section class="p-certifications p-section" id="certifications">'+head('06 — Certifications','Still learning.<br><em>Always will be.</em>')+'<div class="cert-grid">'
-for logo,title,issuer,url in certs:
-    certifications+=f'<a class="cert-card" href="{url}" target="_blank" rel="noreferrer"><span class="cert-logo">{logo}</span><span><h3>{title}</h3><p>{issuer}</p></span><b>↗</b></a>'
-certifications+=f'</div><a class="text-link" href="{LI}details/certifications/" target="_blank" rel="noreferrer">View all credentials on LinkedIn ↗</a></section>'
-
 research='<section class="p-research p-section p-light" id="research"><div class="p-heading p-heading-no-kicker"><div><h2>Questions.<br><em>Experiments. Insights.</em></h2><p>From speech AI to connected systems, a space for deeper thinking.</p></div></div><div class="research-grid">'
 for pid in ['speech','tele','epi']:
     p=next(p for p in projects if p['id']==pid)
@@ -119,7 +113,7 @@ contact=contact.replace('''<label>What can we build together?<select name="inter
 contact=contact.replace('''<button class="send-button" type="submit">Create email draft <span>↗</span></button>''','''<button class="send-button" type="submit">Send message <span>↗</span></button>''')
 contact=contact.replace('''<div class="spotify-shell"><div><small>Currently on repeat</small><strong>A track for the build</strong><a href="https://open.spotify.com/track/3hB9lDLyAClYVZivMMl20N" target="_blank" rel="noreferrer">Open in Spotify ↗</a></div><iframe''','''<div class="spotify-shell"><iframe''')
 contact=contact.replace('theme=0','theme=1')
-page.write_text(prefix+about+experience+featured+catalog+achievements+certifications+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
+page.write_text(prefix+about+experience+featured+catalog+achievements+research+testimonials+contact+'\n</main><script src="script.js"></script><script src="portfolio.js"></script></body></html>\n',encoding='utf-8')
 (root/'dist/project-data.json').write_text(json.dumps(projects,ensure_ascii=False,indent=2),encoding='utf-8')
 script=(root/'dist/script.js').read_text(encoding='utf-8').split('const ugcSlides')[0]
 (root/'dist/script.js').write_text(script.rstrip()+'\n',encoding='utf-8')
